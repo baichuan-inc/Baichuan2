@@ -51,6 +51,7 @@ pip install -r requirements.txt
 ### 量化方法
 
 Baichuan2的量化方法采用社区主流的量化方法：[BitsAndBytes方法](https://github.com/TimDettmers/bitsandbytes)。该方法可以保证量化后的效果基本不掉点，目前已经集成到transformers库里，并在社区得到了广泛应用。BitsAndBytes支持int4和int8两种量化，其中int4支持FP4和NF4两种格式，Baichuan2选用NF4作为4bit量化的数据类型。  
+  
 基于该量化方法，Baichuan2支持在线量化和离线量化两种模式。
 
 ### 在线量化
