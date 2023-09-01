@@ -58,14 +58,14 @@ git clone https://github.com/baichuan-inc/Baichuan2.git
 cd Baichuan2/fine-tune
 pip install -r requirements.txt
 ```
-- 如需使用lora等轻量级微调方法需额外安装peft
-- 如需使用Xformers进行训练加速需额外安装xformers
+- 如需使用 LoRA 等轻量级微调方法需额外安装 peft
+- 如需使用 Xformers 进行训练加速需额外安装 xformers
 
 ## 单机训练
 
-下面我们给一个微调Baichuan2-7B-Base的单机训练例子。
+下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
 
-训练数据：data/belle_chat_ramdon_10k.json，该样例数据是从[multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M)采样出1万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
+训练数据：data/belle_chat_ramdon_10k.json，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
 
 
 ```shell
@@ -98,14 +98,14 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 
 ## 多机训练
 
-多机训练只需要给一下hostfile，内容如下：
+多机训练只需要给一下 hostfile ，内容如下：
 ```
 ip1 slots=8
 ip2 slots=8
 ip3 slots=8
 ip4 slots=8
 ```
-同时在训练脚本里面指定hosftfile的路径：
+同时在训练脚本里面指定 hosftfile 的路径：
 ```shell
 hostfile="/path/to/hostfile"  # 多机
 deepspeed --hostfile=$hostfile fine-tune.py  \
@@ -135,12 +135,12 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 
 ## 轻量化微调
 
-代码已经支持轻量化微调如Lora，如需使用仅需在上面的脚本中加入以下参数
+代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数
 ```shell
 --use_lora True
 ```
-lora具体的配置可见fine-tune.py脚本。
-使用lora微调后可以使用下面的命令加载模型
+LoRA 具体的配置可见 fine-tune.py 脚本。
+使用 LoRA 微调后可以使用下面的命令加载模型
 ```python
 from peft import AutoPeftModelForCausalLM
 
