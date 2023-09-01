@@ -139,7 +139,7 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 ```shell
 --use_lora True
 ```
-lora具体的配置可见finetune.py脚本。
+lora具体的配置可见fine-tune.py脚本。
 使用lora微调后可以使用下面的命令加载模型
 ```python
 from peft import AutoPeftModelForCausalLM
