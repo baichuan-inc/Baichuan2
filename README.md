@@ -55,7 +55,7 @@
 ## 依赖安装
 ```shell
 git clone https://github.com/baichuan-inc/Baichuan2.git
-cd Baichuan2/finetune
+cd Baichuan2/fine-tune
 pip install -r requirements.txt
 ```
 - 如需使用lora等轻量级微调方法需额外安装peft
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 ```shell
 hostfile=""  # 单机
 # hostfile="/path/to/hostfile"  # 多机
-deepspeed --hostfile=$hostfile sft.py  \
+deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
     --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
@@ -108,7 +108,7 @@ ip4 slots=8
 同时在训练脚本里面指定hosftfile的路径：
 ```shell
 hostfile="/path/to/hostfile"  # 多机
-deepspeed --hostfile=$hostfile sft.py  \
+deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
     --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
