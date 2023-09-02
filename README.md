@@ -146,6 +146,9 @@ from peft import AutoPeftModelForCausalLM
 
 model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
 ```
+
+# 历史 checkpoint
+
 # 社区支持
 
 # 声明
