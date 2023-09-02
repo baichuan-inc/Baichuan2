@@ -25,12 +25,12 @@
 # 目录
 
 - [介绍](#介绍)
-- [Benchmark结果](#Benchmark结果)
+- [Benchmark结果](#Benchmark_结果)
 - [模型细节](#模型细节)
 - [推理和部署](#推理和部署)
 - [应用案例](#应用案例)
 - [对模型进行微调](#对模型进行微调)
-- [历史checkpoint](#历史checkpoint)
+- [历史checkpoint](#历史_checkpoint)
 - [社区支持](#社区支持)
 - [声明](#声明)
 - [协议](#协议)
@@ -43,7 +43,7 @@
 | 7B      | [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) |[Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) |[Baichuan2-7B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-int4) |
 | 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-int4) |
 
-# Benchmark结果
+# Benchmark 结果
 
 # 推理和部署
 
