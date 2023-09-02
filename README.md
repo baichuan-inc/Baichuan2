@@ -70,8 +70,7 @@ pip install -r requirements.txt
 
 
 ```shell
-hostfile=""  # 单机
-# hostfile="/path/to/hostfile"  # 多机
+hostfile=""
 deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
@@ -108,7 +107,7 @@ ip4 slots=8
 ```
 同时在训练脚本里面指定 hosftfile 的路径：
 ```shell
-hostfile="/path/to/hostfile"  # 多机
+hostfile="/path/to/hostfile"
 deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
