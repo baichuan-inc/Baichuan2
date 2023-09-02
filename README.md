@@ -148,6 +148,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # 历史 checkpoint
+我们提供了 Baichuan2-7B-Base 模型的 10 个历史 checkpoint（[下载地址](http://hugging-face.co/baichuan-inc/Baichuan-7B-Base)），供研究使用。
 
 # 社区支持
 
