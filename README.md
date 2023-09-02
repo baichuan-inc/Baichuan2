@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
 
-训练数据：data/belle_chat_ramdon_10k.json，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
+训练数据：`data/belle_chat_ramdon_10k.json`，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
 
 
 ```shell
