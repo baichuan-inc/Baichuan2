@@ -8,12 +8,12 @@
 </div>
 
 <p align="center">
-🤗 <a href="https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat" target="_blank">Hugging Face</a> • 🤖 <a href="https://modelscope.cn/organization/baichuan-inc" target="_blank">ModelScope</a> • 💬 <a href="https://github.com/baichuan-inc/Baichuan2/blob/main/media/wechat.jpeg?raw=true" target="_blank">WeChat</a>
+🤗 <a href="https://huggingface.co/baichuan-inc/" target="_blank">Hugging Face</a> • 🤖 <a href="https://modelscope.cn/organization/baichuan-inc" target="_blank">ModelScope</a> • 💬 <a href="https://github.com/baichuan-inc/Baichuan2/blob/main/media/wechat.jpeg?raw=true" target="_blank">WeChat</a>
 </p>
 
 <div align="center">
 
-[![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/Baichuan-7B/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)
 <h4 align="center">
     <p>
         <b>中文</b> |
@@ -36,93 +36,18 @@
 
 # 介绍
 
+## 模型下载
+| 模型尺寸 | 基座模型  | 对齐模型 | 对齐模型 int4 量化 |
+|:-------:|:-------:|:-------:|:-----------------:|
+| 7B      | [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) |[Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) |[Baichuan2-7B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-int4) |
+| 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-int4) |
+
 # Benchmark结果
 
 # 推理和部署
 
-推理前请安装依赖：
-```shell
-pip install -r requirements.txt
-```
-## 量化部署
+## 量化
 
-为了让不同的用户以及不同的平台都能运行Baichuan2模型，我们针对Baichuan2模型做了相应地量化工作(包括Baichuan2-7B-Chat和Baichuan2-13B-Chat)，方便用户快速高效地在自己的平台部署Baichuan2模型。
-
-### 量化方法
-
-Baichuan2的量化方法采用社区主流的量化方法：[BitsAndBytes方法](https://github.com/TimDettmers/bitsandbytes)。该方法可以保证量化后的效果基本不掉点，目前已经集成到transformers库里，并在社区得到了广泛应用。BitsAndBytes支持int4和int8两种量化，其中int4支持FP4和NF4两种格式，Baichuan2选用NF4作为4bit量化的数据类型。  
-  
-基于该量化方法，Baichuan2支持在线量化和离线量化两种模式。
-
-### 在线量化
-
-对于在线量化，我们支持int8和int4量化，使用方式和[Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat)方式类似，只需要先加载模型到CPU的内存里，再调用一个quantize接口量化，最后调用cuda()函数，将量化后的权重拷贝到GPU显存中。实现整个模型加载的代码非常简单，我们以Baichuan2-7B-Chat为例：  
-int8在线量化:
-```python
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
-model = model.quantize(8).cuda() 
-```
-int4在线量化:
-```python
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
-model = model.quantize(4).cuda() 
-```
-需要注意的是，在用from_pretrained接口的时候，用户一般会加上device_map = "auto"，在使用在线量化时，需要去掉这个参数，否则会报错。
-
-### 离线量化
-为了方便用户的使用，我们提供了离线量化好的int4的版本[Baichuan2-7B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-int4/tree/main)，供用户下载。
-用户加载Baichuan2-7B-Chat-int4模型很简单，只需要执行:
-```python
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-int4", device_map="auto", trust_remote_code=True)
-```
-对于int8离线量化，我们没有提供相应的版本，因为HuggingFace transformers库提供了相应的API接口，可以很方便的实现int8量化模型的保存和加载。用户可以自行按照如下方式实现int8的模型保存和加载：
-```python
-#模型保存，其中model_id为原始模型目录，quant8_saved_dir为int8量化后的模型保存目录
-model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
-model.save_pretrained(quant8_saved_dir)
-
-#模型加载
-model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
-```
-### 量化效果
-量化前后显存占用对比：
-| Precision   | Baichuan2-7B GPU Mem (GB) |Baichuan2-13B GPU Mem (GB) |
-|-------------|:------------:|:------------:|
-| bf16 / fp16 | 14.0         | 25.9       |
-| int8        | 8.0         | 14.2        |
-| int4        | 5.1          | 8.6        |
-
-量化后在各个 benchmark 上的结果和原始版本对比如下：
-
-| Model 5-shot           | C-Eval | MMLU | CMMLU |
-|------------------------|:------:|:----:|:-----:|
-| Baichuan2-13B-Chat      | 55.31  | 56.69| 59.28  |
-| Baichuan2-13B-Chat-int4 | 54.90   | 55.73 | 58.09  |
-| Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
-| Baichuan2-7B-Chat-int4 | 53.04   | 51.72 | 52.84  |
-
-可以看到，int4相对bfloat16掉点在1~2个点左右。
-
-## CPU部署
-Baichuan2模型支持CPU推理，但需要强调的是，CPU的推理速度相对较慢。需按如下方式修改模型加载的方式：
-```python
-#以Baichuan2-7B-Chat为例
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
-```
-## Baichuan2相对Baichuan1推理迁移
-由于很多用户在Baichuan1上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于Baichuan2，用户可以对Baichuan2模型做1个离线转换，转换后就可以当做Baichuan1模型来使用。具体来说，用户只需要利用以下脚本离线对Baichuan2模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对Baichuan1模型一样对转换后的模型做编译优化等工作了。
-```python
-import torch
-import os
-ori_model_dir = 'your baichuan2 model directory'
-#为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
-new_model_dir = 'your normalized lm_head weight baichuan2 model directory'
-model = torch.load(os.path.join(ori_model_dir, 'pytorch_model.bin'))
-lm_head_w = model['lm_head.weight']
-lm_head_w = torch.nn.functional.normalize(lm_head_w)
-model['lm_head.weight'] = lm_head_w
-torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
-```
 # 应用案例
 
 # 对模型进行微调
@@ -130,23 +55,23 @@ torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
 ## 依赖安装
 ```shell
 git clone https://github.com/baichuan-inc/Baichuan2.git
-cd Baichuan2/finetune
+cd Baichuan2/fine-tune
 pip install -r requirements.txt
 ```
-- 如需使用lora等轻量级微调方法需额外安装peft
-- 如需使用Xformers进行训练加速需额外安装xformers
+- 如需使用 LoRA 等轻量级微调方法需额外安装 peft
+- 如需使用 Xformers 进行训练加速需额外安装 xformers
 
 ## 单机训练
 
-下面我们给一个微调Baichuan2-7B-Base的单机训练例子。
+下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
 
-训练数据：data/belle_chat_ramdon_10k.json，该样例数据是从[multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M)采样出1万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
+训练数据：data/belle_chat_ramdon_10k.json，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
 
 
 ```shell
 hostfile=""  # 单机
 # hostfile="/path/to/hostfile"  # 多机
-deepspeed --hostfile=$hostfile sft.py  \
+deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
     --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
@@ -173,17 +98,17 @@ deepspeed --hostfile=$hostfile sft.py  \
 
 ## 多机训练
 
-多机训练只需要给一下hostfile，内容如下：
+多机训练只需要给一下 hostfile ，内容如下：
 ```
 ip1 slots=8
 ip2 slots=8
 ip3 slots=8
 ip4 slots=8
 ```
-同时在训练脚本里面指定hosftfile的路径：
+同时在训练脚本里面指定 hosftfile 的路径：
 ```shell
 hostfile="/path/to/hostfile"  # 多机
-deepspeed --hostfile=$hostfile sft.py  \
+deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
     --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
@@ -210,12 +135,12 @@ deepspeed --hostfile=$hostfile sft.py  \
 
 ## 轻量化微调
 
-代码已经支持轻量化微调如Lora，如需使用仅需在上面的脚本中加入以下参数
+代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数
 ```shell
 --use_lora True
 ```
-lora具体的配置可见finetune.py脚本。
-使用lora微调后可以使用下面的命令加载模型
+LoRA 具体的配置可见 fine-tune.py 脚本。
+使用 LoRA 微调后可以使用下面的命令加载模型
 ```python
 from peft import AutoPeftModelForCausalLM
 
