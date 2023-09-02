@@ -143,7 +143,6 @@ LoRA 具体的配置可见 fine-tune.py 脚本。
 使用 LoRA 微调后可以使用下面的命令加载模型
 ```python
 from peft import AutoPeftModelForCausalLM
-
 model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
 ```
 
