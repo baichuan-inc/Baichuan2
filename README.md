@@ -74,7 +74,7 @@ hostfile=""
 deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
-    --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
+    --model_name_or_path "baichuan-inc/Baichuan2-7B-Base" \
     --output_dir "output" \
     --model_max_length 512 \
     --num_train_epochs 4 \
@@ -111,7 +111,7 @@ hostfile="/path/to/hostfile"
 deepspeed --hostfile=$hostfile fine-tune.py  \
     --report_to "none" \
     --data_path "data/belle_chat_ramdon_10k.json" \
-    --model_name_or_path "Baichuan/Baichuan2-7B-Base" \
+    --model_name_or_path "baichuan-inc/Baichuan2-7B-Base" \
     --output_dir "output" \
     --model_max_length 512 \
     --num_train_epochs 4 \
