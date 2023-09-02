@@ -38,10 +38,10 @@
 # 介绍
 
 ## 模型下载
-| 模型尺寸 | 基座模型  | 对齐模型 | 对齐模型 int4 量化 |
+| 模型尺寸 | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
 |:-------:|:-------:|:-------:|:-----------------:|
-| 7B      | [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) |[Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) |[Baichuan2-7B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-int4) |
-| 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-int4) |
+| 7B      | [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) |[Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) |[Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits) |
+| 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-4bits) |
 
 # Benchmark 结果
 
@@ -76,10 +76,10 @@ model = model.quantize(4).cuda()
 需要注意的是，在用from_pretrained接口的时候，用户一般会加上device_map = "auto"，在使用在线量化时，需要去掉这个参数，否则会报错。
 
 ### 离线量化
-为了方便用户的使用，我们提供了离线量化好的4bits的版本[Baichuan2-7B-Chat-int4](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-int4/tree/main)，供用户下载。
-用户加载Baichuan2-7B-Chat-int4模型很简单，只需要执行:
+为了方便用户的使用，我们提供了离线量化好的4bits的版本[Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main)，供用户下载。
+用户加载Baichuan2-7B-Chat-4bits模型很简单，只需要执行:
 ```python
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-int4", device_map="auto", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bits", device_map="auto", trust_remote_code=True)
 ```
 对于8bits离线量化，我们没有提供相应的版本，因为HuggingFace transformers库提供了相应的API接口，可以很方便的实现8bits量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
 ```python
@@ -95,17 +95,17 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Precision   | Baichuan2-7B GPU Mem (GB) |Baichuan2-13B GPU Mem (GB) |
 |-------------|:------------:|:------------:|
 | bf16 / fp16 | 14.0         | 25.9       |
-| int8        | 8.0         | 14.2        |
-| int4        | 5.1          | 8.6        |
+| 8bits        | 8.0         | 14.2        |
+| 4bits        | 5.1          | 8.6        |
 
 量化后在各个 benchmark 上的结果和原始版本对比如下：
 
 | Model 5-shot           | C-Eval | MMLU | CMMLU |
 |------------------------|:------:|:----:|:-----:|
 | Baichuan2-13B-Chat      | 55.31  | 56.69| 59.28  |
-| Baichuan2-13B-Chat-int4 | 54.90   | 55.73 | 58.09  |
+| Baichuan2-13B-Chat-4bits | 54.90   | 55.73 | 58.09  |
 | Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
-| Baichuan2-7B-Chat-int4 | 53.04   | 51.72 | 52.84  |
+| Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 
 可以看到，4bits相对bfloat16掉点在1~2个点左右。
 
