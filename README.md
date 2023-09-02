@@ -59,7 +59,7 @@ cd Baichuan2/fine-tune
 pip install -r requirements.txt
 ```
 - 如需使用 LoRA 等轻量级微调方法需额外安装 peft
-- 如需使用 Xformers 进行训练加速需额外安装 xformers
+- 如需使用 xformers 进行训练加速需额外安装 xformers
 
 ## 单机训练
 
