@@ -186,8 +186,8 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 
 | Model 5-shot           | C-Eval | MMLU | CMMLU |
 |------------------------|:------:|:----:|:-----:|
-| Baichuan2-13B-Chat      | 55.31  | 56.69| 59.28  |
-| Baichuan2-13B-Chat-4bits | 54.90   | 55.73 | 58.09  |
+| Baichuan2-13B-Chat      | 56.74  | 57.32| 59.68  |
+| Baichuan2-13B-Chat-4bits | 56.05   | 56.24 | 58.82  |
 | Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 
