@@ -25,12 +25,12 @@
 # 目录
 
 - [介绍](#介绍)
-- [Benchmark结果](#Benchmark_结果)
+- [Benchmark结果](#Benchmark-结果)
 - [模型细节](#模型细节)
 - [推理和部署](#推理和部署)
 - [应用案例](#应用案例)
 - [对模型进行微调](#对模型进行微调)
-- [历史 checkpoint](#历史_checkpoint)
+- [历史 checkpoint](#历史-checkpoint)
 - [社区支持](#社区支持)
 - [声明](#声明)
 - [协议](#协议)
