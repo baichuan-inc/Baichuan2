@@ -37,11 +37,12 @@
 
 # 介绍
 
-## 模型下载
+Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更新版本，采用 2.6 万亿  Tokens 的高质量语料训练，在权威的中文和英文 benchmark 上均取得同尺寸最好的效果。本次发布包含有 7B、13B 的 Base 和 Chat 版本，并提供了 Chat 版本的 4bits 量化，所有版本不仅对学术研究完全开放，开发者也仅需邮件申请并获得官方商用许可后，即可以免费商用。具体发布版本和下载见下表：
 |         | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
 |:-------:|:-------:|:-------:|:-----------------:|
 | 7B      | [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) |[Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) |[Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits) |
 | 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-4bits) |
+
 
 # Benchmark 结果
 
@@ -50,7 +51,7 @@
 >*表示模型结果从其官方获取。
 
 ## 通用领域
-在通用领域我们在[C-Eval](https://cevalbenchmark.com/index.html#home)，[MMLU](https://arxiv.org/abs/2009.03300)和[CMMLU](https://github.com/haonan-li/CMMLU)三个评测集上进行了5-shot评测。
+在通用领域我们在 [C-Eval](https://cevalbenchmark.com/index.html#home)，[MMLU](https://arxiv.org/abs/2009.03300) 和 [CMMLU](https://github.com/haonan-li/CMMLU) 三个评测集上进行了5-shot评测。
 
 
 ### 7B模型结果
@@ -62,7 +63,7 @@
 | ChatGLM2-6B (base)* | 51.7    | 47.9    | -       | 4
 
 ### 13B模型结果
-| 模型名称                    | C-Eval 5-shot | MMLU 5-shot | CMMLU 5-shot | AVERAGE |
+| 模型名称                 | C-Eval 5-shot | MMLU 5-shot | CMMLU 5-shot | AVERAGE |
 |-------------------------|---------------|-------------|--------------|---------|
 |                         |  5-shot       |  5-shot     |  5-shot      |         |
 | GPT-4*                  | 68.7          | 86.4        | 70.95        | 75.4    |
@@ -72,7 +73,7 @@
 
 
 ## 法律、医疗
-法律领域我们使用了[JEC-QA](https://jecqa.thunlp.org/)数据集。我们只保留了其中的单选题。
+法律领域我们使用了 [JEC-QA](https://jecqa.thunlp.org/) 数据集。我们只保留了其中的单选题。
 
 医疗领域则使用通用领域数据集（CEval-val、MMLU、CMMLU）中的医学相关学科、[MedQA](https://huggingface.co/datasets/bigbio/med_qa)(USMLE、MCMLE)和[MedMCQA](https://medmcqa.github.io/)。
 - MedQA采用了五个候选的版本；
@@ -102,25 +103,25 @@
 
 
 ## 数学、代码
-数学领域我们对[GSM8K](https://huggingface.co/datasets/gsm8k)和[MAtH](https://huggingface.co/datasets/competition_math)数据集进行了4-shot测试。
+数学领域我们对 [GSM8K](https://huggingface.co/datasets/gsm8k)和 [MAtH](https://huggingface.co/datasets/competition_math)数据集进行了 4-shot 测试。
 
-代码领域则采用了[HumanEval](https://huggingface.co/datasets/openai_humaneval)和[MBPP](https://huggingface.co/datasets/mbpp)数据集，并对HumanEval进行了0-shot测试，MBPP数据集进行了3-shot测试。
+代码领域则采用了 [HumanEval](https://huggingface.co/datasets/openai_humaneval)和 [MBPP](https://huggingface.co/datasets/mbpp) 数据集，并对 HumanEval 进行了 0-shot 测试，MBPP 数据集进行了 3-shot 测试。
 
 
 
 ### 7B模型结果
-| 模型名称                | GSM8K  | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
+| 模型名称              | GSM8K  | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
 |---------------------|--------|--------|---------|-----------|--------|---------|
 |                     | 4-shot | 4-shot |         |  0-shot   | 3-shot |         |
 | ChatGLM2-6B (base)* | 32.37  |        | 32.4    |           |        |         |
 | ChatGLM2-6B*        | 28.05  |        | 28.1    |           |        |         |
 | InternLM-7B         | 31.2   | 7.1    | 19.2    | 10.4      |        |         |
-| InternLM-7B-Chat    | 34.5   | 6.4    | 20.5    | 14        |      
+| InternLM-7B-Chat    | 34.5   | 6.4    | 20.5    | 14        |        |         |
 ### 13B模型结果
 
-| 数学                      |               |        | 代码      |           |        |
+| 数学                     |               |        | 代码     |           |        |
 |-------------------------|---------------|--------|---------|-----------|--------|
-| 模型名称                    | GSM8K         | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
+| 模型名称                 | GSM8K         | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
 |                         | 4-shot        | 4-shot |         |  0-shot   | 3-shot |         |
 | GPT-4*                  | 92 (5-shot)   | 42.5   |         | 67.0      |        |         |
 | GPT-3.5*                | 57.1 (5-shot) |        |         | 48.1      |        |         |
