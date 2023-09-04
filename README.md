@@ -44,7 +44,6 @@
 | 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-4bits) |
 
 # Benchmark 结果
-# Benchmark结果
 
 我们在通用、法律、医疗、数学和代码五个领域的中英文权威数据集上对模型进行了广泛测试。
 
