@@ -44,6 +44,90 @@
 | 13B     | [Baichuan2-13B-Base](https://huggingface.co/baichuan-inc/Baichuan2-13B-Base) |[Baichuan2-13B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat) |[Baichuan2-13B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat-4bits) |
 
 # Benchmark 结果
+# Benchmark结果
+
+我们在通用、法律、医疗、数学和代码五个领域的中英文权威数据集上对模型进行了广泛测试。
+
+>*表示模型结果从其官方获取。
+
+## 通用领域
+在通用领域我们在[C-Eval](https://cevalbenchmark.com/index.html#home)，[MMLU](https://arxiv.org/abs/2009.03300)和[CMMLU](https://github.com/haonan-li/CMMLU)三个评测集上进行了5-shot评测。
+
+
+### 7B模型结果
+| 模型名称                | C-Eval  | MMLU    | CMMLU   | AVERAGE |
+|---------------------|---------|---------|---------|---------|
+|                     |  5-shot |  5-shot |  5-shot |         |
+| GPT-4*              | 68.7    | 86.4    | 71.0    | 75.4    |
+| GPT-3.5*            | -       | 70.0    | -       | 70.0    |
+| ChatGLM2-6B (base)* | 51.7    | 47.9    | -       | 4
+
+### 13B模型结果
+| 模型名称                    | C-Eval 5-shot | MMLU 5-shot | CMMLU 5-shot | AVERAGE |
+|-------------------------|---------------|-------------|--------------|---------|
+|                         |  5-shot       |  5-shot     |  5-shot      |         |
+| GPT-4*                  | 68.7          | 86.4        | 70.95        | 75.4    |
+| GPT-3.5*                | -             | 70.0        | -            | 70.0    |
+| ChatGLM-12B(base)*      | 61.6          | 56.2        | -            | 58.9    |
+
+
+
+## 法律、医疗
+法律领域我们使用了[JEC-QA](https://jecqa.thunlp.org/)数据集。我们只保留了其中的单选题。
+
+医疗领域则使用通用领域数据集（CEval-val、MMLU、CMMLU）中的医学相关学科、[MedQA](https://huggingface.co/datasets/bigbio/med_qa)(USMLE、MCMLE)和[MedMCQA](https://medmcqa.github.io/)。
+- MedQA采用了五个候选的版本；
+- MedMCQA只保留了其中的单选题，并且使用dev集进行测试；
+- 通用领域数据集包含的医学相关学科如下：
+    - CEval: clinical_medicine,basic_medicine
+    - MMLU: clinical_knowledge,anatomy,college_medicine,college_biology,nutrition,virology,medical_genetics,professional_medicine
+    - CMMLU: anatomy,clinical_knowledge,college_medicine,genetics,nutrition,traditional_chinese_medicine,virology 
+
+我们采用对以上数据集进行了5-shot测试。
+### 7B模型结果
+
+| 模型名称               | JEC-QA | CEval-MMLU-CMMLU | MedQA-USMLE | MedQA-MCMLE | MedExam | MedMCQA | AVERAGE |
+|--------------------|--------|------------------|-------------|-------------|---------|---------|---------|
+|                    | 5-shot |  5-shot          |  5-shot     |  5-shot     | 5-shot  | 5-shot  |         |
+| GPT-4              | 59.32  | 77.16            | 80.28       | 74.58       | 75.10   | 72.51   | 75.93   |
+| GPT-3.5            | 42.31  | 61.17            | 53.81       | 52.92       | 54.20   | 56.25   | 55.67   |
+| LLaMA-7B           | 27.45  | 33.34            | 24.12       | 21.72       | 17.67   | 27.45   | 24.86   |
+
+
+### 13B模型结果
+| 模型名称                    | 法律      | 医疗        |
+|-------------------------|---------|------------------|-------------|-------------|---------|---------|---------|
+|                         | JEC-QA  | CEval-MMLU-CMMLU | MedQA-USMLE | MedQA-MCMLE | MedExam | MedMCQA | AVERAGE |
+|                         |  5-shot |  5-shot          |  5-shot  53.33   | 42.08   | 46.46   |
+
+
+
+## 数学、代码
+数学领域我们对[GSM8K](https://huggingface.co/datasets/gsm8k)和[MAtH](https://huggingface.co/datasets/competition_math)数据集进行了4-shot测试。
+
+代码领域则采用了[HumanEval](https://huggingface.co/datasets/openai_humaneval)和[MBPP](https://huggingface.co/datasets/mbpp)数据集，并对HumanEval进行了0-shot测试，MBPP数据集进行了3-shot测试。
+
+
+
+### 7B模型结果
+| 模型名称                | GSM8K  | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
+|---------------------|--------|--------|---------|-----------|--------|---------|
+|                     | 4-shot | 4-shot |         |  0-shot   | 3-shot |         |
+| ChatGLM2-6B (base)* | 32.37  |        | 32.4    |           |        |         |
+| ChatGLM2-6B*        | 28.05  |        | 28.1    |           |        |         |
+| InternLM-7B         | 31.2   | 7.1    | 19.2    | 10.4      |        |         |
+| InternLM-7B-Chat    | 34.5   | 6.4    | 20.5    | 14        |      
+### 13B模型结果
+
+| 数学                      |               |        | 代码      |           |        |
+|-------------------------|---------------|--------|---------|-----------|--------|
+| 模型名称                    | GSM8K         | MATH   | AVERAGE | HumanEval | MBPP   | AVERAGE |
+|                         | 4-shot        | 4-shot |         |  0-shot   | 3-shot |         |
+| GPT-4*                  | 92 (5-shot)   | 42.5   |         | 67.0      |        |         |
+| GPT-3.5*                | 57.1 (5-shot) |        |         | 48.1      |        |         |
+| ChatGLM-12B(base)*      | 40.9          |        |         |           |        |         |
+
+
 
 # 推理和部署
 推理前请安装依赖：
