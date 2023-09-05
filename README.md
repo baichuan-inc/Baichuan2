@@ -53,7 +53,7 @@ Baichuan2 是百川智能推出的新一代开源大语言模型，采用 **2.6 
 - [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案。
 - [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与 C-Eval 类似的评测方案。
 - [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与 C-Eval 类似的评测方案。
-- [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
+- [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子集。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
 
 ### 7B 模型结果
 
@@ -90,6 +90,7 @@ Baichuan2 是百川智能推出的新一代开源大语言模型，采用 **2.6 
 法律领域我们使用了 [JEC-QA](https://jecqa.thunlp.org/) 数据集。JEC-QA 数据集来源于中国国家司法考试。我们只保留了其中的单选题。我们采用了与 C-Eval 类似的评测方案。
 
 医疗领域则使用通用领域数据集（C-Eval、MMLU、CMMLU）中的医学相关学科、[MedQA](https://arxiv.org/abs/2009.13081) 和 [MedMCQA](https://medmcqa.github.io/)。我们采用了与 C-Eval 类似的评测方案。
+- 为了测试方便，我们使用了 C-Eval 的 val 集进行测试。
 - MedQA 数据集来源于美国、中国大陆和中国台湾的医学考试。我们测试了 [MedQA数据集](https://huggingface.co/datasets/bigbio/med_qa) 中的 USMLE 和 MCMLE 两个子集，并采用了五个候选的版本。
 - MedMCQA 数据集来源于印度医学院的入学考试。我们只保留了其中的单选题。由于 test 集没有答案，我们使用 dev 集进行测试。
 - 通用领域数据集包含的医学相关学科如下：
