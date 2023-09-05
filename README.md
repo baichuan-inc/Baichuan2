@@ -139,7 +139,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 数学领域我们使用 [OpenCompass](https://opencompass.org.cn/) 评估框架，对 [GSM8K](https://huggingface.co/datasets/gsm8k) 和 [MATH](https://huggingface.co/datasets/competition_math) 数据集进行了 4-shot 测试。
 
 - GSM8K 是由 OpenAI 发布的一个由 8.5K 高质量的语言多样化的小学数学应用题组成的数据集，要求根据给定的场景和两个可能的解决方案，选择最合理的方案。
-- MATH数据集包含 12,500 个数学问题（其中 7500 个属于训练集，5000 个属于测试集），这些问题收集自 AMC 10、AMC 12、AIME 等数学竞赛。
+- MATH 数据集包含 12,500 个数学问题（其中 7500 个属于训练集，5000 个属于测试集），这些问题收集自 AMC 10、AMC 12、AIME 等数学竞赛。
 
 代码领域则采用了 [HumanEval](https://huggingface.co/datasets/openai_humaneval) 和 [MBPP](https://huggingface.co/datasets/mbpp) 数据集。我们使用 OpenCompass，对 HumanEval 进行了 0-shot 测试，MBPP 数据集进行了 3-shot 测试。
 - HumanEval 中的编程任务包括模型语言理解、推理、算法和简单数学，以评估模型功能正确性，并衡量模型的问题解决能力。
