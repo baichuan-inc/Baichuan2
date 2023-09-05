@@ -95,9 +95,9 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 - MedQA 数据集来源于美国、中国大陆和中国台湾的医学考试。我们测试了 [MedQA数据集](https://huggingface.co/datasets/bigbio/med_qa) 中的 USMLE 和 MCMLE 两个子集，并采用了五个候选的版本；
 - MedMCQA 数据集来源于印度医学院的入学考试。我们只保留了其中的单选题。由于 test 集没有答案，我们使用 dev 集进行测试；
 - 通用领域数据集包含的医学相关学科如下：
-    - C-Eval: clinical_medicine,basic_medicine
-    - MMLU: clinical_knowledge,anatomy,college_medicine,college_biology,nutrition,virology,medical_genetics,professional_medicine
-    - CMMLU: anatomy,clinical_knowledge,college_medicine,genetics,nutrition,traditional_chinese_medicine,virology 
+    - C-Eval: clinical_medicine, basic_medicine
+    - MMLU: clinical_knowledge, anatomy, college_medicine, college_biology, nutrition, virology, medical_genetics, professional_medicine
+    - CMMLU: anatomy, clinical_knowledge, college_medicine, genetics, nutrition, traditional_chinese_medicine, virology 
 
 我们对以上数据集进行了 5-shot 测试。
 
