@@ -3,7 +3,7 @@
 
 <div align="center">
 <h1>
-  Baichuan2
+  Baichuan2 (7B/13B)
 </h1>
 </div>
 
@@ -24,16 +24,15 @@
 
 # 目录
 
-- [介绍](#介绍)
-- [Benchmark结果](#Benchmark-结果)
-- [推理和部署](#推理和部署)
-- [对模型进行微调](#对模型进行微调)
-- [历史 checkpoint](#历史-checkpoint)
-- [社区和生态](#社区和生态)
-- [声明](#声明)
-- [协议](#协议)
+- [📖 模型介绍](#模型介绍)
+- [🔥🔥📊 Benchmark 结果](#Benchmark-结果)
+- [⚙️ 推理和部署](#推理和部署)
+- [🛠️ 模型微调](#模型微调)
+- [🔥🔥💾 历史 checkpoint](#历史-checkpoint)
+- [👥 社区与生态](#社区与生态)
+- [📜 声明与协议](#声明与协议)
 
-# 介绍
+# 模型介绍
 
 Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更新版本，采用 2.64 万亿  Tokens 的高质量语料训练，在权威的中文和英文 benchmark 上均取得同尺寸最好的效果。本次发布包含有 7B、13B 的 Base 和 Chat 版本，并提供了 Chat 版本的 4bits 量化，所有版本不仅对学术研究完全开放，开发者也仅需邮件申请并获得官方商用许可后，即可以免费商用。具体发布版本和下载见下表：
 |         | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
@@ -48,12 +47,12 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 ## 通用领域
-在通用领域我们在以下数据集上进行了5-shot测试。
+在通用领域我们在以下数据集上进行了 5-shot 测试。
 - [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了 [Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main) 的评测方案。
 - [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案。
 - [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案。
-- [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案。
-- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案。
+- [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与 C-Eval 类似的评测方案。
+- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与 C-Eval 类似的评测方案。
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
 
 
@@ -431,7 +430,7 @@ torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
 ```
 
 
-# 对模型进行微调
+# 模型微调
 
 ## 依赖安装
 ```shell
@@ -531,7 +530,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 ![checkpoint](media/checkpoints.jpeg)
 
-# 社区和生态
+# 社区与生态
 
 📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
@@ -545,11 +544,12 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 **大模型体验平台**：[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan) 大模型能力开放给公众，欢迎大家使用。
 
 
-# 声明
+# 声明与协议
 
+## 声明
 我们在此声明，我们的开发团队并未基于 Baichuan2 模型开发任何应用，无论是在 iOS、Android、网页或任何其他平台。我们强烈呼吁所有使用者，不要利用 Baichuan2 模型进行任何危害国家社会安全或违法的活动。另外，我们也要求使用者不要将 Baichuan2 模型用于未经适当安全审查和备案的互联网服务。我们希望所有的使用者都能遵守这个原则，确保科技的发展能在规范和合法的环境下进行。
 
 我们已经尽我们所能，来确保模型训练过程中使用的数据的合规性。然而，尽管我们已经做出了巨大的努力，但由于模型和数据的复杂性，仍有可能存在一些无法预见的问题。因此，如果由于使用 Baichuan2 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
 
-# 协议
+## 协议
 对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)。对 Baichuan2 模型的社区使用需遵循[《Baichuan2 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/blob/main/Baichuan2%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan2 支持商用。如果将 Baichuan2 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱 <opensource@baichuan-inc.com>。
