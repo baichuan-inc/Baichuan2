@@ -228,13 +228,15 @@ pip install -r requirements.txt
 >>> from transformers import AutoModelForCausalLM, AutoTokenizer
 >>> from transformers.generation.utils import GenerationConfig
 >>> tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", use_fast=False, trust_remote_code=True)
->>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", device_map="auto", torch_dtype=torch.float16, trust_remote_code=True)
+>>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True)
 >>> model.generation_config = GenerationConfig.from_pretrained("baichuan-inc/Baichuan2-13B-Chat")
 >>> messages = []
->>> messages.append({"role": "user", "content": "世界上第二高的山峰是哪座"})
+>>> messages.append({"role": "user", "content": "解释一下“温故而知新”"})
 >>> response = model.chat(tokenizer, messages)
 >>> print(response)
-TODO 改一个新的case
+"温故而知新"是一句中国古代的成语，出自《论语·为政》篇。这句话的意思是：通过回顾过去，我们可以发现新的知识和理解。换句话说，学习历史和经验可以让我们更好地理解现在和未来。
+
+这句话鼓励我们在学习和生活中不断地回顾和反思过去的经验，从而获得新的启示和成长。通过重温旧的知识和经历，我们可以发现新的观点和理解，从而更好地应对不断变化的世界和挑战。
 ```
 
 > 在上述代码中，模型加载指定 `device_map='auto'`，会使用所有可用显卡。如需指定使用的设备，可以使用类似 `export CUDA_VISIBLE_DEVICES=0,1`（使用了0、1号显卡）的方式控制。
