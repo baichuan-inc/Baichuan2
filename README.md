@@ -351,17 +351,18 @@ Translate: I hope through the joint efforts of everyone, we can look forward to 
 
 ## 量化部署
 
-为了让不同的用户以及不同的平台都能运行 Baichuan2 模型，我们针对 Baichuan2 模型做了相应地量化工作(包括 Baichuan2-7B-Chat 和 Baichuan2-13B-Chat)，方便用户快速高效地在自己的平台部署 Baichuan2 模型。
+为了让不同的用户以及不同的平台都能运行 Baichuan2 模型，我们针对 Baichuan2 模型做了相应地量化工作（包括 Baichuan2-7B-Chat 和 Baichuan2-13B-Chat），方便用户快速高效地在自己的平台部署 Baichuan2 模型。
 
 ### 量化方法
 
-Baichuan2 的量化方法采用社区主流的量化方法：[BitsAndBytes方法](https://github.com/TimDettmers/bitsandbytes)。该方法可以保证量化后的效果基本不掉点，目前已经集成到transformers库里，并在社区得到了广泛应用。BitsAndBytes 支持 4bits 和 8bits 两种量化，其中 4bits 支持 FP4 和 NF4 两种格式，Baichuan2 选用 NF4 作为 4bit 量化的数据类型。  
+Baichuan2 的采用社区主流的量化方法：[BitsAndBytes方法](https://github.com/TimDettmers/bitsandbytes)。该方法可以保证量化后的效果基本不掉点，目前已经集成到 transformers 库里，并在社区得到了广泛应用。BitsAndBytes 支持 4bits 和 8bits 两种量化，其中 4bits 支持 FP4 和 NF4 两种格式，Baichuan2 选用 NF4 作为 4bits 量化的数据类型。  
   
 基于该量化方法，Baichuan2支持在线量化和离线量化两种模式。
 
 ### 在线量化
 
-对于在线量化，我们支持 8bits 和 4bits 量化，使用方式和[Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat)方式类似，只需要先加载模型到 CPU 的内存里，再调用一个 quantize 接口量化，最后调用cuda()函数，将量化后的权重拷贝到GPU显存中。实现整个模型加载的代码非常简单，我们以 Baichuan2-7B-Chat 为例：  
+对于在线量化，我们支持 8bits 和 4bits 量化，使用方式和[Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat)方式类似，只需要先加载模型到 CPU 的内存里，再调用`quantize()`接口量化，最后调用 `cuda()`函数，将量化后的权重拷贝到 GPU 显存中。实现整个模型加载的代码非常简单，我们以 Baichuan2-7B-Chat 为例：
+
 8bits 在线量化:
 ```python
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
@@ -372,7 +373,7 @@ model = model.quantize(8).cuda()
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
 model = model.quantize(4).cuda() 
 ```
-需要注意的是，在用 from_pretrained 接口的时候，用户一般会加上 device_map = "auto"，在使用在线量化时，需要去掉这个参数，否则会报错。
+需要注意的是，在用 `from_pretrained` 接口的时候，用户一般会加上 `device_map = "auto"`，在使用在线量化时，需要去掉这个参数，否则会报错。
 
 ### 离线量化
 为了方便用户的使用，我们提供了离线量化好的 4bits 的版本 [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main)，供用户下载。
@@ -406,7 +407,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 
-可以看到，4bits相对bfloat16掉点在1~2个点左右。
+可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
 
 ## CPU部署
 Baichuan2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
