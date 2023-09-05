@@ -332,9 +332,9 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 # 社区支持
 
 ## 华为昇腾
-**昇腾NPU微调**：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)。13B 支持正在开发中。
+**昇腾NPU微调**：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)。13B 支持正在开发中。
 
-**昇腾NPU部署**：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
+**昇腾NPU部署**：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
 
 **MindFormers套件**：[MindFormers](https://gitee.com/mindspore/mindformers) 是构建一个基于昇思框架(MindSpore)大模型训练、微调、评估、推理、部署的全流程开发套件，当前集成了[Baichuan2](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2)，支持用户进行模型部署、微调训练和创新研发。
 
