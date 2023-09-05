@@ -25,10 +25,10 @@
 # 目录
 
 - [📖 模型介绍](#模型介绍)
-- [🔥🔥📊 Benchmark结果](#Benchmark-结果)
+- [📊 Benchmark结果 🔥🔥](#Benchmark-结果)
 - [⚙️ 推理和部署](#推理和部署)
 - [🛠️ 模型微调](#模型微调)
-- [🔥🔥💾 Intermediate Checkpoints](#Intermediate-Checkpoints)
+- [💾 Intermediate Checkpoints 🔥🔥](#Intermediate-Checkpoints)
 - [👥 社区与生态](#社区与生态)
 - [📜 声明与协议](#声明与协议)
 
