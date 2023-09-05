@@ -44,6 +44,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 我们在通用、法律、医疗、数学、代码和多语言翻译六个领域的中英文权威数据集上对模型进行了广泛测试。
 
 ## 通用领域
+
 在通用领域我们在以下数据集上进行了 5-shot 测试。
 - [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了 [Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main) 的评测方案。
 - [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案。
@@ -53,6 +54,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
 
 ### 7B 模型结果
+
 |               | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |               |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -67,6 +69,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **Baichuan2-7B-Base**      | 54.00      | 54.16    | 57.07     | 47.47      | 42.73       | 41.56   |
 
 ### 13B 模型结果
+
 |                     | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |                     |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -82,6 +85,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 ## 法律、医疗
+
 法律领域我们使用了 [JEC-QA](https://jecqa.thunlp.org/) 数据集。JEC-QA 数据集来源于中国国家司法考试。我们只保留了其中的单选题。我们采用了与 C-Eval 类似的评测方案。
 
 医疗领域则使用通用领域数据集（C-Eval、MMLU、CMMLU）中的医学相关学科、[MedQA](https://arxiv.org/abs/2009.13081) 和 [MedMCQA](https://medmcqa.github.io/)。我们采用了与 C-Eval 类似的评测方案。
@@ -95,6 +99,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 我们对以上数据集进行了 5-shot 测试。
 
 ### 7B 模型结果
+
 |             | **JEC-QA** | **CEval-MMLU-CMMLU** | **MedQA-USMLE** | **MedQA-MCMLE** | **MedMCQA** |
 |:---------------------:|:----------:|:--------------------:|:---------------:|:---------------:|:-----------:|
 |             | 5-shot     |  5-shot              |  5-shot         |  5-shot         | 5-shot      |
@@ -108,8 +113,8 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **Baichuan-7B**       | 34.64      | 42.37                | 27.42           | 39.46           | 31.39       |
 | **Baichuan2-7B-Base** | 44.46      | 56.39                | 32.68           | 54.93           | 41.73       |
 
-
 ### 13B 模型结果
+
 |                  | **JEC-QA** | **CEval-MMLU-CMMLU** | **MedQA-USMLE** | **MedQA-MCMLE** | **MedMCQA** |
 |:---------------------------:|:----------:|:--------------------:|:---------------:|:---------------:|:-----------:|
 |                   | 5-shot     |  5-shot              |  5-shot         |  5-shot         | 5-shot      |
@@ -124,6 +129,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **Baichuan2-13B-Base**      | 47.40      | 59.33                | 40.38           | 61.62           | 42.86       |
 
 ## 数学、代码
+
 数学领域我们使用 [OpenCompass](https://opencompass.org.cn/) 评估框架，对 [GSM8K](https://huggingface.co/datasets/gsm8k) 和 [MATH](https://huggingface.co/datasets/competition_math) 数据集进行了 4-shot 测试。
 
 - GSM8K 是由 OpenAI 发布的一个由 8.5K 高质量的语言多样化的小学数学应用题组成的数据集，要求根据给定的场景和两个可能的解决方案，选择最合理的方案。
@@ -134,6 +140,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 - MBPP 包括 974 个 Python 短函数、程序的文字描述以及用于检查功能正确性的测试用例的数据集。
 
 ### 7B 模型结果
+
 |               | **GSM8K** | **MATH** | **HumanEval** | **MBPP** |
 |:---------------------:|:---------:|:--------:|:-------------:|:--------:|
 |               |  4-shot   | 4-shot   |  0-shot       |  3-shot  |
@@ -164,9 +171,11 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 ## 多语言
+
 我们采用了 [Flores-101](https://huggingface.co/datasets/facebook/flores) 数据集来评估模型的多语言能力。Flores-101 涵盖了世界各地的101种语言。它的数据来源于新闻、旅游指南和书籍等多个不同领域。我们选择了联合国官方语言（阿拉伯文、中文、英文、法文、俄文和西班牙文）以及德文和日文作为测试语种。我们使用 OpenCompass 对 Flores-101 中的中-英、中-法、中-西班牙、中-阿拉伯、中-俄、中-日、中-德等七个子任务分别进行了 8-shot 测试。
 
 ### 7B 模型结果
+
 |               | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
 |:---------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
 | **GPT-4**             | 29.94   | 29.56   | 20.01     | 10.76     | 18.62   | 13.26   | 20.83   |
@@ -180,6 +189,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **Baichuan2-7B-Base**      | 27.27   | 20.87   | 16.17     | 1.39      | 11.21   | 3.11    | 12.76   |
 
 ### 13B 模型结果
+
 |                             | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
 |:---------------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
 |          **GPT-4**          | 29.94   | 29.56   | 20.01     | 10.76     | 18.62   | 13.26   | 20.83   |
@@ -322,16 +332,6 @@ Translate: I hope through the joint efforts of everyone, we can look forward to 
 </details>
 
 
-## 推理性能 （待 @wuzhiying 更新）
-
-| Model       | tokens/s |
-|-------------|:--------:|
-| LLaMA-13B   | ？？     |
-| Baichuan-13B| ？？    |
-
-> 测试环境和参数：
-
-
 ## 量化部署
 
 为了让不同的用户以及不同的平台都能运行 Baichuan2 模型，我们针对 Baichuan2 模型做了相应地量化工作（包括 Baichuan2-7B-Chat 和 Baichuan2-13B-Chat），方便用户快速高效地在自己的平台部署 Baichuan2 模型。
@@ -359,6 +359,7 @@ model = model.quantize(4).cuda()
 需要注意的是，在用 `from_pretrained` 接口的时候，用户一般会加上 `device_map = "auto"`，在使用在线量化时，需要去掉这个参数，否则会报错。
 
 ### 离线量化
+
 为了方便用户的使用，我们提供了离线量化好的 4bits 的版本 [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main)，供用户下载。
 用户加载 Baichuan2-7B-Chat-4bits 模型很简单，只需要执行:
 ```python
@@ -366,14 +367,15 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bi
 ```
 对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
 ```python
-#模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
+# 模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
 model.save_pretrained(quant8_saved_dir)
 
-#模型加载
+# 模型加载
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
 ```
 ### 量化效果
+
 量化前后显存占用对比：
 | Precision   | Baichuan2-7B GPU Mem (GB) |Baichuan2-13B GPU Mem (GB) |
 |-------------|:------------:|:------------:|
@@ -393,12 +395,14 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
 
 ## CPU 部署
+
 Baichuan2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
 ```python
 #以Baichuan2-7B-Chat为例
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
-## Baichuan2 相对 Baichuan 推理迁移
+## 对Baichuan的推理优化迁移到 Baichuan2
+
 由于很多用户在 Baichuan(Baichuan-7B, Baichuan-13B)上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于 Baichuan2，用户可以对 Baichuan2 模型做一个离线转换，转换后就可以当做 Baichuan 模型来使用。具体来说，用户只需要利用以下脚本离线对 Baichuan2 模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对 Baichuan 模型一样对转换后的模型做编译优化等工作了。
 ```python
 import torch
@@ -413,10 +417,10 @@ model['lm_head.weight'] = lm_head_w
 torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
 ```
 
-
 # 模型微调
 
 ## 依赖安装
+
 ```shell
 git clone https://github.com/baichuan-inc/Baichuan2.git
 cd Baichuan2/fine-tune
@@ -430,7 +434,6 @@ pip install -r requirements.txt
 下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
 
 训练数据：`data/belle_chat_ramdon_10k.json`，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
-
 
 ```shell
 hostfile=""
@@ -498,12 +501,13 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 
 ## 轻量化微调
 
-代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数
+代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数：
 ```shell
 --use_lora True
 ```
 LoRA 具体的配置可见 `fine-tune.py` 脚本。
-使用 LoRA 微调后可以使用下面的命令加载模型
+
+使用 LoRA 微调后可以使用下面的命令加载模型：
 ```python
 from peft import AutoPeftModelForCausalLM
 model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
@@ -519,20 +523,25 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 📢📢📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 ## 华为昇腾
+
 ### Pytorch 框架
+
 模型微调：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)、Baichuan2-13B 正在适配中。
 
 推理部署：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
 
 ### MindSpore 框架
+
 [MindFormers]( https://gitee.com/mindspore/mindformers) 是一个基于昇思框架（MindSpore）并支持大模型训练、微调、评估、推理、部署的全流程开发套件，[Baichuan2-7B / 13B]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) 已集成于此套件，支持用户进行模型微调、部署，具体使用方式可见 [README]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md)。
 
 ### 大模型体验平台
+
 [昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) 大模型能力开放给公众，欢迎大家在线体验。
 
 # 声明与协议
 
 ## 声明
+
 我们在此声明，我们的开发团队并未基于 Baichuan2 模型开发任何应用，无论是在 iOS、Android、网页或任何其他平台。我们强烈呼吁所有使用者，不要利用 Baichuan2 模型进行任何危害国家社会安全或违法的活动。另外，我们也要求使用者不要将 Baichuan2 模型用于未经适当安全审查和备案的互联网服务。我们希望所有的使用者都能遵守这个原则，确保科技的发展能在规范和合法的环境下进行。
 
 我们已经尽我们所能，来确保模型训练过程中使用的数据的合规性。然而，尽管我们已经做出了巨大的努力，但由于模型和数据的复杂性，仍有可能存在一些无法预见的问题。因此，如果由于使用 Baichuan2 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
