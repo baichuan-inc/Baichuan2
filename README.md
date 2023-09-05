@@ -28,7 +28,7 @@
 - [Benchmark结果](#Benchmark-结果)
 - [推理和部署](#推理和部署)
 - [对模型进行微调](#对模型进行微调)
-- [Intermediate-Checkpoints](#Intermediate-Checkpoints)
+- [Intermediate Checkpoints](#Intermediate-Checkpoints)
 - [社区和生态](#社区和生态)
 - [声明](#声明)
 - [协议](#协议)
