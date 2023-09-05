@@ -33,6 +33,7 @@
 - [📜 声明与协议](#声明与协议)
 
 # 模型介绍
+
 Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更新版本，采用 2.64 万亿  Tokens 的高质量语料训练，在权威的中文和英文 benchmark 上均取得同尺寸最好的效果。本次发布包含有 7B、13B 的 Base 和 Chat 版本，并提供了 Chat 版本的 4bits 量化，所有版本不仅对学术研究完全开放，开发者也仅需邮件申请并获得官方商用许可后，即可以免费商用。具体发布版本和下载见下表：
 |         | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
 |:-------:|:-------:|:-------:|:-----------------:|
@@ -41,6 +42,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 # Benchmark 结果
+
 我们在通用、法律、医疗、数学、代码和多语言翻译六个领域的中英文权威数据集上对模型进行了广泛测试。
 
 ## 通用领域
@@ -82,7 +84,6 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **XVERSE-13B**              | 53.70      | 55.21    | 58.44     | 44.69      | 42.54       | 38.28   |
 | **Baichuan-13B-Base**       | 52.40      | 51.60    | 55.30     | 49.69      | 43.20       | 43.01   |
 | **Baichuan2-13B-Base**           | 58.10      | 59.17    | 61.97     | 54.33      | 48.17       | 48.78   |
-
 
 ## 法律、医疗
 
@@ -169,7 +170,6 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 | **Baichuan-13B-Base**       |   26.76   | 4.84     | 11.59         |  22.80   |
 | **Baichuan2-13B-Base**           |   52.77   | 10.08    | 17.07         |  30.20   |
 
-
 ## 多语言
 
 我们采用了 [Flores-101](https://huggingface.co/datasets/facebook/flores) 数据集来评估模型的多语言能力。Flores-101 涵盖了世界各地的101种语言。它的数据来源于新闻、旅游指南和书籍等多个不同领域。我们选择了联合国官方语言（阿拉伯文、中文、英文、法文、俄文和西班牙文）以及德文和日文作为测试语种。我们使用 OpenCompass 对 Flores-101 中的中-英、中-法、中-西班牙、中-阿拉伯、中-俄、中-日、中-德等七个子任务分别进行了 8-shot 测试。
@@ -231,7 +231,6 @@ pip install -r requirements.txt
 
 > 在上述代码中，模型加载指定 `device_map='auto'`，会使用所有可用显卡。如需指定使用的设备，可以使用类似 `export CUDA_VISIBLE_DEVICES=0,1`（使用了0、1号显卡）的方式控制。
 
-
 ## 命令行工具方式
 
 ```shell
@@ -273,7 +272,6 @@ print(find_median(arr))
 在这个例子中，数组 [3.1, 6.2, 1.3, 8.4, 10.5, 11.6, 2.1, 5.9] 的中位数是 6.05。
 
 ```
-
 </details>
 
 <details><summary><b>数学问题</b></summary>
@@ -367,11 +365,9 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bi
 ```
 对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
 ```python
-# 模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
+# Model saving: model_id is the original model directory, and quant8_saved_dir is the directory where the 8bits quantized model is saved.
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
 model.save_pretrained(quant8_saved_dir)
-
-# 模型加载
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
 ```
 ### 量化效果
@@ -398,7 +394,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 
 Baichuan2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
 ```python
-#以Baichuan2-7B-Chat为例
+# Taking BVaichuan2-7B-Chat as an example
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
 ## 对Baichuan的推理优化迁移到 Baichuan2
@@ -408,7 +404,7 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", t
 import torch
 import os
 ori_model_dir = 'your baichuan2 model directory'
-# 为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
+# To avoid overwriting the original model, it's best to save the converted model to another directory before replacing it
 new_model_dir = 'your normalized lm_head weight baichuan2 model directory'
 model = torch.load(os.path.join(ori_model_dir, 'pytorch_model.bin'))
 lm_head_w = model['lm_head.weight']
