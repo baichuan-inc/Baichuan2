@@ -4,3 +4,4 @@ bitsandbytes
 sentencepiece
 streamlit
 transformers_stream_generator
+cpm_kernels
