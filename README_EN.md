@@ -332,16 +332,6 @@ Translate: I hope through the joint efforts of everyone, we can look forward to 
 </details>
 
 
-## Performance of Inference （待 @wuzhiying 更新）
-
-| Model       | tokens/s |
-|-------------|:--------:|
-| LLaMA-13B   | ？？     |
-| Baichuan-13B| ？？    |
-
-> Enviroment and params used in testing:
-
-
 ## Quantization Deployment
 
 To allow different users and platforms to run the Baichuan2 model, we have carried out quantization for the Baichuan2 model (including Baichuan2-7B-Chat and Baichuan2-13B-Chat). This facilitates users to quickly and efficiently deploy the Baichuan2 model on their respective platforms.
