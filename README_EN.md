@@ -366,11 +366,9 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bi
 ```
 For 8bits offline quantization, we haven't provided a corresponding version since the HuggingFace transformers library offers the necessary API interfaces. This makes the saving and loading of 8bits quantized models very convenient. Users can implement the saving and loading of 8bits models in the following manner:
 ```python
-#模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
+# Model saving: model_id is the original model directory, and quant8_saved_dir is the directory where the 8bits quantized model is saved.
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
 model.save_pretrained(quant8_saved_dir)
-
-#模型加载
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
 ```
 ### Quantization Effect
@@ -396,7 +394,7 @@ It can be seen that the 4bits, compared to bfloat16, has a drop of around 1~2 pe
 
 Baichuan-13B supports CPU inference, but it should be emphasized that the inference speed on CPU will be very slow. Modify the model loading logic as follows:
 ```python
-#以Baichuan2-7B-Chat为例
+# Taking BVaichuan2-7B-Chat as an example
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
 
@@ -407,7 +405,7 @@ Given that many users have made various optimizations on Baichuan (Baichuan-7B, 
 import torch
 import os
 ori_model_dir = 'your baichuan2 model directory'
-# 为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
+# To avoid overwriting the original model, it's best to save the converted model to another directory before replacing it
 new_model_dir = 'your normalized lm_head weight baichuan2 model directory'
 model = torch.load(os.path.join(ori_model_dir, 'pytorch_model.bin'))
 lm_head_w = model['lm_head.weight']
