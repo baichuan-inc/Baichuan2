@@ -519,7 +519,7 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 ```shell
 --use_lora True
 ```
-LoRA 具体的配置可见 fine-tune.py 脚本。
+LoRA 具体的配置可见 `fine-tune.py` 脚本。
 使用 LoRA 微调后可以使用下面的命令加载模型
 ```python
 from peft import AutoPeftModelForCausalLM
@@ -527,13 +527,13 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # Intermediate Checkpoints
-除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint （分别对应训练 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
+除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint（分别对应训练了 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
 
 ![checkpoint](media/checkpoints.jpeg)
 
 # 社区和生态
 
-📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
+📢📢📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 ## 华为昇腾
 ### Pytorch 框架
