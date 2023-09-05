@@ -248,7 +248,7 @@ python cli_demo.py
 
 ## 网页 demo 方式
 
-依靠streamlit运行以下命令，会在本地启动一个 web 服务，把控制台给出的地址放入浏览器即可访问。
+依靠 streamlit 运行以下命令，会在本地启动一个 web 服务，把控制台给出的地址放入浏览器即可访问。
 
 ```shell
 streamlit run web_demo.py
