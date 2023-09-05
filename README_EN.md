@@ -34,7 +34,7 @@
 
 # Introduction
 
-Baichuan2 is the new generation of open-source large language models launched by Baichuan Intelligent Technology. It was trained on a high-quality corpus with 2.64 trillion tokens, achieving the best results in both Chinese and English benchmarks of the same scale. This release includes Base and Chat versions for 7B and 13B, and a 4bits quantized version for the Chat model. All versions are fully open to academic research. Developers only need to apply via email and obtain official commercial permission to use it for free commercially. The specific released versions and download links are shown in the table below:
+Baichuan2 is the new generation of open-source large language models launched by Baichuan Intelligent Technology. It was trained on a high-quality corpus with 2.6 trillion tokens, achieving the best results in both Chinese and English benchmarks of the same scale. This release includes Base and Chat versions for 7B and 13B, and a 4bits quantized version for the Chat model. All versions are fully open to academic research. Developers only need to apply via email and obtain official commercial permission to use it for free commercially. The specific released versions and download links are shown in the table below:
 
 |         | Base Models  | Aligned Models | Aligned Models 4bits Quantized |
 |:-------:|:-----------:|:-------------:|:-----------------------------:|
@@ -461,12 +461,13 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 
 ## Multi-machine Training
 
-For multi-machine training, you only need to provide the hostfile, the content of which is as follows:
+For multi-machine training, you only need to provide the hostfile, the content of which is similar to follows:
 ```
 ip1 slots=8
 ip2 slots=8
 ip3 slots=8
 ip4 slots=8
+....
 ```
 
 At the same time, specify the path of the hostfile in the training script:
@@ -512,7 +513,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # Intermediate Checkpoints
-In addition to the Baichuan2-7B-Base model with 2.64 trillion tokens, we also provide 11 other checkpoints (ranging from 0.22 to 2.42 trillion tokens) from before this for community research ([Download link](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)). The chart below shows the performance changes of these checkpoints on the C-Eval, MMLU, and CMMLU benchmarks:
+In addition to the Baichuan2-7B-Base model with 2.6 trillion tokens, we also provide 11 intermediate checkpoints (ranging approximately from 0.2 to 2.4 trillion tokens) from before this for community research ([Download link](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)). The chart below shows the performance changes of these checkpoints on the C-Eval, MMLU, and CMMLU benchmarks:
 
 ![checkpoint](media/checkpoints.jpeg)
 
