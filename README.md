@@ -130,10 +130,105 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 # 推理和部署
+
+推理所需的模型权重、源码、配置已发布在 Hugging Face，下载链接见本文档最开始的表格。下面以 Baichuan2-13B-Chat 为例示范多种推理方式。程序会自动从 Hugging Face 下载所需资源。
+
 推理前请安装依赖：
 ```shell
 pip install -r requirements.txt
 ```
+
+## Python代码方式
+
+```python
+>>> import torch
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> from transformers.generation.utils import GenerationConfig
+>>> tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", use_fast=False, trust_remote_code=True)
+>>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan-13B-Chat", device_map="auto", torch_dtype=torch.float16, trust_remote_code=True)
+>>> model.generation_config = GenerationConfig.from_pretrained("baichuan-inc/Baichuan-13B-Chat")
+>>> messages = []
+>>> messages.append({"role": "user", "content": "世界上第二高的山峰是哪座"})
+>>> response = model.chat(tokenizer, messages)
+>>> print(response)
+TODO 改一个新的case
+```
+
+> 在上述代码中，模型加载指定 `device_map='auto'`，会使用所有可用显卡。如需指定使用的设备，可以使用类似 `export CUDA_VISIBLE_DEVICES=0,1`（使用了0、1号显卡）的方式控制。
+
+
+## 命令行工具方式
+
+```shell
+python cli_demo.py
+```
+最后输出示例如下：
+
+<p align="center">
+    <img src="media/cn-cli.png" width="70%"/>
+</p>
+
+## 网页 demo 方式
+
+依靠streamlit运行以下命令，会在本地启动一个 web 服务，把控制台给出的地址放入浏览器即可访问。
+
+```shell
+streamlit run web_demo.py
+```
+
+效果如下：
+
+<p align="center">
+    <img src="media/cn-web.gif" width="70%"/>
+</p>
+
+## Baichuan-13B-Chat 示例输出
+
+<details><summary><b>内容创作</b></summary>
+
+```
+用户：
+
+```
+
+</details>
+
+<details><summary><b>广告文案</b></summary>
+  
+```
+用户：
+```
+
+</details>
+
+<details><summary><b>精准问答</b></summary>
+
+```
+用户：
+世界上第二高的山是什么山
+```
+
+</details>
+
+<details><summary><b>语言理解</b></summary>
+
+```
+用户：
+```
+</details>
+
+
+## 推理性能
+Baichuan-13B 使用了 ALiBi 线性偏置技术，相对于 Rotary Embedding 计算量更小，对推理性能有显著提升；与标准的 LLaMA-13B 相比，平均推理速度 (tokens/s) 实测提升 31.6%：
+
+| Model       | tokens/s |
+|-------------|:--------:|
+| LLaMA-13B   | ？？     |
+| Baichuan-13B| ？？    |
+
+> 测试环境和参数：GPU A100-SXM4-80G, PyTorch 2.0.0+cu117, transformers 4.29.1, batch size = 1, 生成长度 = 2048, 精度 fp16, 基于 Baichuan-13B-Base
+
+
 ## 量化部署
 
 为了让不同的用户以及不同的平台都能运行Baichuan2模型，我们针对Baichuan2模型做了相应地量化工作(包括Baichuan2-7B-Chat和Baichuan2-13B-Chat)，方便用户快速高效地在自己的平台部署Baichuan2模型。
