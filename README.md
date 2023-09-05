@@ -49,11 +49,11 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 ## 通用领域
 在通用领域我们在以下数据集上进行了5-shot测试。
-- [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了 [Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main) 的评测方案；
-- [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案；
-- [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案；
-- [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案；
-- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案；
+- [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了 [Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main) 的评测方案。
+- [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案。
+- [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案。
+- [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案。
+- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案。
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
 
 
@@ -92,8 +92,8 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 法律领域我们使用了 [JEC-QA](https://jecqa.thunlp.org/) 数据集。JEC-QA 数据集来源于中国国家司法考试。我们只保留了其中的单选题。我们采用了与 C-Eval 类似的评测方案。
 
 医疗领域则使用通用领域数据集（C-Eval、MMLU、CMMLU）中的医学相关学科、[MedQA](https://arxiv.org/abs/2009.13081) 和 [MedMCQA](https://medmcqa.github.io/)。我们采用了与 C-Eval 类似的评测方案。
-- MedQA 数据集来源于美国、中国大陆和中国台湾的医学考试。我们测试了 [MedQA数据集](https://huggingface.co/datasets/bigbio/med_qa) 中的 USMLE 和 MCMLE 两个子集，并采用了五个候选的版本；
-- MedMCQA 数据集来源于印度医学院的入学考试。我们只保留了其中的单选题。由于 test 集没有答案，我们使用 dev 集进行测试；
+- MedQA 数据集来源于美国、中国大陆和中国台湾的医学考试。我们测试了 [MedQA数据集](https://huggingface.co/datasets/bigbio/med_qa) 中的 USMLE 和 MCMLE 两个子集，并采用了五个候选的版本。
+- MedMCQA 数据集来源于印度医学院的入学考试。我们只保留了其中的单选题。由于 test 集没有答案，我们使用 dev 集进行测试。
 - 通用领域数据集包含的医学相关学科如下：
     - C-Eval: clinical_medicine, basic_medicine
     - MMLU: clinical_knowledge, anatomy, college_medicine, college_biology, nutrition, virology, medical_genetics, professional_medicine
