@@ -48,7 +48,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 
 
 ## 通用领域
-在通用领域我们在以下数据集上进行了5-shot测试。
+在通用领域我们在以下数据集上进行了 5-shot 测试。
 - [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了 [Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main) 的评测方案。
 - [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案。
 - [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案。
