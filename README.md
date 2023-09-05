@@ -53,7 +53,7 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 - [MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test)的评测方案；
 - [CMMLU](https://github.com/haonan-li/CMMLU) 是一个包含 67 个主题的综合性性中文评估基准，专门用于评估语言模型在中文语境下的知识和推理能力。我们采用了其[官方](https://github.com/haonan-li/CMMLU)的评测方案；
 - [Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。 我们只保留了其中的单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案；
-- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案。
+- [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。 我们只保留了其中的四选一单项选择题，并进行了随机划分。我们采用了与C-Eval类似的评测方案；
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) 是一个挑战性任务 Big-Bench 的子。Big-Bench 目前包括 204 项任务。任务主题涉及语言学、儿童发展、数学、常识推理、生物学、物理学、社会偏见、软件开发等方面。BBH 是从 204 项 Big-Bench 评测基准任务中大模型表现不好的任务单独拿出来形成的评测基准。
 
 
@@ -527,7 +527,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # 历史 checkpoint
-除了训练了 2.64 万亿 Tokens的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint （分别对应训练 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-History-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
+除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint （分别对应训练 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-History-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
 
 ![checkpoint](media/checkpoints.jpeg)
 
