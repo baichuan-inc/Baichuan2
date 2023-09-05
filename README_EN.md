@@ -201,3 +201,350 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 |       **XVERSE-13B**        | 29.26   | 24.03   | 16.67     | 2.78      | 11.61   | 3.08    | 14.26   |
 |    **Baichuan-13B-Base**    | 30.24   | 20.90   | 15.92     | 0.98      | 9.65    | 2.64    | 12.00   |
 |      **Baichuan2-13B-Base**      | 30.61   | 22.11   | 17.27     | 2.39      | 14.17   | 11.58   | 14.53   |
+
+# Inference and Deployment
+
+The model weights, source code, and configuration needed for inference have been released on Hugging Face. Download links can be found in the table at the beginning of this document. Below, we demonstrate various inference methods using Baichuan2-13B-Chat as an example. The program will automatically download the required resources from Hugging Face.
+
+Before inference, please install the dependencies:
+```shell
+pip install -r requirements.txt
+```
+
+## Python Code Inference
+
+```python
+>>> import torch
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> from transformers.generation.utils import GenerationConfig
+>>> tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", use_fast=False, trust_remote_code=True)
+>>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-13B-Chat", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True)
+>>> model.generation_config = GenerationConfig.from_pretrained("baichuan-inc/Baichuan2-13B-Chat")
+>>> messages = []
+>>> messages.append({"role": "user", "content": "解释一下“温故而知新”"})
+>>> response = model.chat(tokenizer, messages)
+>>> print(response)
+"温故而知新"是一句中国古代的成语，出自《论语·为政》篇。这句话的意思是：通过回顾过去，我们可以发现新的知识和理解。换句话说，学习历史和经验可以让我们更好地理解现在和未来。
+
+这句话鼓励我们在学习和生活中不断地回顾和反思过去的经验，从而获得新的启示和成长。通过重温旧的知识和经历，我们可以发现新的观点和理解，从而更好地应对不断变化的世界和挑战。
+```
+
+> In the above code, the model loading specifies `device_map='auto'`, which will use all available GPUs. If you need to specify the device(s) to use, you can control it in a way similar to `export CUDA_VISIBLE_DEVICES=0,1` (using the 0 and 1 graphics cards).
+
+
+## Command Line Tool Inference
+
+```shell
+python cli_demo.py
+```
+
+## Web Demo Inference
+
+Run the following command using streamlit. It will start a web service locally. You can access it by entering the address provided in the console into your browser.
+
+```shell
+streamlit run web_demo.py
+```
+
+## Demo Results of Baichuan2-13B-Chat
+
+<details><summary><b>Coding</b></summary>
+
+```
+User：写python代码，找到下列数组的中位数[3.1,6.2,1.3,8.4,10.5,11.6,2.1,5.9]
+
+Baichuan2:
+首先，我们需要对数组进行排序。然后，我们检查数组的元素个数是否等于奇数还是偶数，以确定中位数的计算方法。最后，返回中位数。
+以下是实现这个功能的Python代码：
+def find_median(arr):
+    arr.sort()
+    length = len(arr)
+
+    if length % 2 == 0:
+        median1 = arr[length // 2]
+        median2 = arr[length // 2 - 1]
+        median = (median1 + median2) / 2
+    else:
+        median = arr[length // 2]
+    return median
+Example usage:
+arr = [3.1, 6.2, 1.3, 8.4, 10.5, 11.6, 2.1, 5.9]
+print(find_median(arr))
+在这个例子中，数组 [3.1, 6.2, 1.3, 8.4, 10.5, 11.6, 2.1, 5.9] 的中位数是 6.05。
+
+```
+
+</details>
+
+<details><summary><b>Math</b></summary>
+  
+```
+User：
+鸡和兔在一个笼子里，共有35个头，94只脚，那么鸡有多少只，兔有多少只？
+
+Baichuan2:
+我们可以用代数方法来解决这个问题。设鸡的数量为x，兔子的数量为y。
+根据题意我们可以得到以下两个方程：
+1. x + y = 35 (头的总数)
+2. 2x + 4y = 94 (脚的总数)
+我们可以先求解第一个方程，得到 y = 35 - x。然后将这个结果代入第二个方程：
+2x + 4(35 - x) = 94
+化简后得到：
+2x + 140 - 4x = 94
+进一步整理得：
+-2x = -46
+所以 x = 23。这意味着有23只鸡。将 x 的值代回第一个方程，我们得到：
+23 + y = 35
+解得：
+y = 12
+所以，笼子里共有23只鸡和12只兔子。
+```
+
+</details>
+
+<details><summary><b>Instruction Following</b></summary>
+
+```
+User：
+从现在开始，你会翻译我说的每一句话，并且翻译的之前面都带上“translate：”，准备好了吗？
+
+Baichuan2:
+好的，我已经准备好为您翻译了。请随时开始说话，我会尽力准确翻译您的内容。
+
+User：
+你好
+
+Baichuan2:
+Translate: Hello.
+
+User：
+我是Baichuan2，很高兴认识大家
+
+Baichuan2:
+Translate: Hi, I am Baichuan2, nice to meet you all.
+
+User：
+希望通过大家的共同努力，早日迎接AGI时代的到来
+
+Baichuan2:
+Translate: I hope through the joint efforts of everyone, we can look forward to the arrival of the AGI era sooner.
+```
+</details>
+
+
+## Performance of Inference （待 @wuzhiying 更新）
+
+| Model       | tokens/s |
+|-------------|:--------:|
+| LLaMA-13B   | ？？     |
+| Baichuan-13B| ？？    |
+
+> Enviroment and params used in testing:
+
+
+## 量化部署
+
+为了让不同的用户以及不同的平台都能运行 Baichuan2 模型，我们针对 Baichuan2 模型做了相应地量化工作（包括 Baichuan2-7B-Chat 和 Baichuan2-13B-Chat），方便用户快速高效地在自己的平台部署 Baichuan2 模型。
+
+### 量化方法
+
+Baichuan2 的采用社区主流的量化方法：[BitsAndBytes](https://github.com/TimDettmers/bitsandbytes)方法。该方法可以保证量化后的效果基本不掉点，目前已经集成到 transformers 库里，并在社区得到了广泛应用。BitsAndBytes 支持 4bits 和 8bits 两种量化，其中 4bits 支持 FP4 和 NF4 两种格式，Baichuan2 选用 NF4 作为 4bits 量化的数据类型。  
+  
+基于该量化方法，Baichuan2支持在线量化和离线量化两种模式。
+
+### 在线量化
+
+对于在线量化，我们支持 8bits 和 4bits 量化，使用方式和 [Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat) 项目中的方式类似，只需要先加载模型到 CPU 的内存里，再调用`quantize()`接口量化，最后调用 `cuda()`函数，将量化后的权重拷贝到 GPU 显存中。实现整个模型加载的代码非常简单，我们以 Baichuan2-7B-Chat 为例：
+
+8bits 在线量化:
+```python
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
+model = model.quantize(8).cuda() 
+```
+4bits 在线量化:
+```python
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
+model = model.quantize(4).cuda() 
+```
+需要注意的是，在用 `from_pretrained` 接口的时候，用户一般会加上 `device_map = "auto"`，在使用在线量化时，需要去掉这个参数，否则会报错。
+
+### 离线量化
+为了方便用户的使用，我们提供了离线量化好的 4bits 的版本 [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main)，供用户下载。
+用户加载 Baichuan2-7B-Chat-4bits 模型很简单，只需要执行:
+```python
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bits", device_map="auto", trust_remote_code=True)
+```
+对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
+```python
+#模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
+model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
+model.save_pretrained(quant8_saved_dir)
+
+#模型加载
+model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
+```
+### 量化效果
+量化前后显存占用对比：
+| Precision   | Baichuan2-7B GPU Mem (GB) |Baichuan2-13B GPU Mem (GB) |
+|-------------|:------------:|:------------:|
+| bf16 / fp16 | 14.0         | 25.9       |
+| 8bits        | 8.0         | 14.2        |
+| 4bits        | 5.1          | 8.6        |
+
+量化后在各个 benchmark 上的结果和原始版本对比如下：
+
+| Model 5-shot           | C-Eval | MMLU | CMMLU |
+|------------------------|:------:|:----:|:-----:|
+| Baichuan2-13B-Chat      | 56.74  | 57.32| 59.68  |
+| Baichuan2-13B-Chat-4bits | 56.05   | 56.24 | 58.82  |
+| Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
+| Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
+
+可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
+
+## CPU 部署
+Baichuan2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
+```python
+#以Baichuan2-7B-Chat为例
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
+```
+## Baichuan2 相对 Baichuan 推理迁移
+由于很多用户在 Baichuan(Baichuan-7B, Baichuan-13B)上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于 Baichuan2，用户可以对 Baichuan2 模型做一个离线转换，转换后就可以当做 Baichuan 模型来使用。具体来说，用户只需要利用以下脚本离线对 Baichuan2 模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对 Baichuan 模型一样对转换后的模型做编译优化等工作了。
+```python
+import torch
+import os
+ori_model_dir = 'your baichuan2 model directory'
+# 为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
+new_model_dir = 'your normalized lm_head weight baichuan2 model directory'
+model = torch.load(os.path.join(ori_model_dir, 'pytorch_model.bin'))
+lm_head_w = model['lm_head.weight']
+lm_head_w = torch.nn.functional.normalize(lm_head_w)
+model['lm_head.weight'] = lm_head_w
+torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
+```
+
+
+# 对模型进行微调
+
+## 依赖安装
+```shell
+git clone https://github.com/baichuan-inc/Baichuan2.git
+cd Baichuan2/fine-tune
+pip install -r requirements.txt
+```
+- 如需使用 LoRA 等轻量级微调方法需额外安装 [peft](https://github.com/huggingface/peft)
+- 如需使用 xFormers 进行训练加速需额外安装 [xFormers](https://github.com/facebookresearch/xformers)
+
+## 单机训练
+
+下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
+
+训练数据：`data/belle_chat_ramdon_10k.json`，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
+
+
+```shell
+hostfile=""
+deepspeed --hostfile=$hostfile fine-tune.py  \
+    --report_to "none" \
+    --data_path "data/belle_chat_ramdon_10k.json" \
+    --model_name_or_path "baichuan-inc/Baichuan2-7B-Base" \
+    --output_dir "output" \
+    --model_max_length 512 \
+    --num_train_epochs 4 \
+    --per_device_train_batch_size 16 \
+    --gradient_accumulation_steps 1 \
+    --save_strategy epoch \
+    --learning_rate 2e-5 \
+    --lr_scheduler_type constant \
+    --adam_beta1 0.9 \
+    --adam_beta2 0.98 \
+    --adam_epsilon 1e-8 \
+    --max_grad_norm 1.0 \
+    --weight_decay 1e-4 \
+    --warmup_ratio 0.0 \
+    --logging_steps 1 \
+    --gradient_checkpointing True \
+    --deepspeed ds_config.json \
+    --bf16 True \
+    --tf32 True
+```
+
+## 多机训练
+
+多机训练只需要给一下 hostfile ，内容如下：
+```
+ip1 slots=8
+ip2 slots=8
+ip3 slots=8
+ip4 slots=8
+```
+同时在训练脚本里面指定 hosftfile 的路径：
+```shell
+hostfile="/path/to/hostfile"
+deepspeed --hostfile=$hostfile fine-tune.py  \
+    --report_to "none" \
+    --data_path "data/belle_chat_ramdon_10k.json" \
+    --model_name_or_path "baichuan-inc/Baichuan2-7B-Base" \
+    --output_dir "output" \
+    --model_max_length 512 \
+    --num_train_epochs 4 \
+    --per_device_train_batch_size 16 \
+    --gradient_accumulation_steps 1 \
+    --save_strategy epoch \
+    --learning_rate 2e-5 \
+    --lr_scheduler_type constant \
+    --adam_beta1 0.9 \
+    --adam_beta2 0.98 \
+    --adam_epsilon 1e-8 \
+    --max_grad_norm 1.0 \
+    --weight_decay 1e-4 \
+    --warmup_ratio 0.0 \
+    --logging_steps 1 \
+    --gradient_checkpointing True \
+    --deepspeed ds_config.json \
+    --bf16 True \
+    --tf32 True
+```
+
+## 轻量化微调
+
+代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数
+```shell
+--use_lora True
+```
+LoRA 具体的配置可见 `fine-tune.py` 脚本。
+使用 LoRA 微调后可以使用下面的命令加载模型
+```python
+from peft import AutoPeftModelForCausalLM
+model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
+```
+
+# Intermediate Checkpoints
+除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint（分别对应训练了 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
+
+![checkpoint](media/checkpoints.jpeg)
+
+# 社区和生态
+
+📢📢📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
+
+## 华为昇腾
+### Pytorch 框架
+模型微调：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)、Baichuan2-13B 正在适配中。
+
+推理部署：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
+
+### MindSpore 框架
+[MindFormers]( https://gitee.com/mindspore/mindformers) 是一个基于昇思框架（MindSpore）并支持大模型训练、微调、评估、推理、部署的全流程开发套件，[Baichuan2-7B / 13B]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) 已集成于此套件，支持用户进行模型微调、部署，具体使用方式可见 [README]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md)。
+
+### 大模型体验平台
+[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) 大模型能力开放给公众，欢迎大家在线体验。
+
+
+# Disclaimer
+We hereby declare that our team has not developed any applications based on Baichuan2 models, not on iOS, Android, the web, or any other platform. We strongly call on all users not to use Baichuan2 models for any activities that harm national / social security or violate the law. Also, we ask users not to use Baichuan2 models for Internet services that have not undergone appropriate security reviews and filings. We hope that all users can abide by this principle and ensure that the development of technology proceeds in a regulated and legal environment.
+
+We have done our best to ensure the compliance of the data used in the model training process. However, despite our considerable efforts, there may still be some unforeseeable issues due to the complexity of the model and data. Therefore, if any problems arise due to the use of Baichuan2 open-source models, including but not limited to data security issues, public opinion risks, or any risks and problems brought about by the model being misled, abused, spread or improperly exploited, we will not assume any responsibility.
+
+# License
+对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)。对 Baichuan2 模型的社区使用需遵循[《Baichuan2 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/blob/main/Baichuan2%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan2 支持商用。如果将 Baichuan2 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱 <opensource@baichuan-inc.com>。
