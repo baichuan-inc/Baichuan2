@@ -177,7 +177,7 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 
 ### 7B Model Results
 
-|               | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
+|               | **CN-EN** | **CN-FR** | **CN-ES** | **CN-AR** | **CN-RU** | **CN-JP** | **CN-DE** |
 |:---------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
 | **GPT-4**             | 29.94   | 29.56   | 20.01     | 10.76     | 18.62   | 13.26   | 20.83   |
 | **GPT-3.5 Turbo**     | 27.67   | 26.15   | 19.58     | 10.73     | 17.45   | 1.82    | 19.70   |
@@ -189,9 +189,11 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 | **Baichuan-7B**       | 25.07   | 16.51   | 12.72     | 0.41      | 6.66    | 2.24    | 9.86    |
 | **Baichuan2-7B-Base**      | 27.27   | 20.87   | 16.17     | 1.39      | 11.21   | 3.11    | 12.76   |
 
+Note: CN, EN, FR, ES, AR, RU, JP, and DE correspond to Chinese, English, French, Spanish, Arabic, Russian, Japanese, and German, respectively.
+
 ### 13B Model Results
 
-|                             | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
+|                             | **CN-EN** | **CN-FR** | **CN-ES** | **CN-AR** | **CN-RU** | **CN-JP** | **CN-DE** |
 |:---------------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
 |          **GPT-4**          | 29.94   | 29.56   | 20.01     | 10.76     | 18.62   | 13.26   | 20.83   |
 |      **GPT-3.5 Turbo**      | 27.67   | 26.15   | 19.58     | 10.73     | 17.45   | 1.82    | 19.70   |
@@ -202,6 +204,8 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 |       **XVERSE-13B**        | 29.26   | 24.03   | 16.67     | 2.78      | 11.61   | 3.08    | 14.26   |
 |    **Baichuan-13B-Base**    | 30.24   | 20.90   | 15.92     | 0.98      | 9.65    | 2.64    | 12.00   |
 |      **Baichuan2-13B-Base**      | 30.61   | 22.11   | 17.27     | 2.39      | 14.17   | 11.58   | 14.53   |
+
+Note: CN, EN, FR, ES, AR, RU, JP, and DE correspond to Chinese, English, French, Spanish, Arabic, Russian, Japanese, and German, respectively.
 
 # Inference and Deployment
 
