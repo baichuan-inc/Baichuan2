@@ -28,7 +28,7 @@
 - [Benchmark结果](#Benchmark-结果)
 - [推理和部署](#推理和部署)
 - [对模型进行微调](#对模型进行微调)
-- [历史 checkpoint](#历史-checkpoint)
+- [Intermediate-Checkpoints](#Intermediate-Checkpoints)
 - [社区和生态](#社区和生态)
 - [声明](#声明)
 - [协议](#协议)
@@ -526,7 +526,7 @@ from peft import AutoPeftModelForCausalLM
 model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
 ```
 
-# 历史 checkpoint
+# Intermediate Checkpoints
 除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint （分别对应训练 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
 
 ![checkpoint](media/checkpoints.jpeg)
