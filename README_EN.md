@@ -56,7 +56,7 @@ In the general domain, we conducted 5-shot tests on the following datasets:
 - [AGIEval](https://github.com/microsoft/AGIEval) aims to evaluate a model's general abilities in cognition and problem-solving related tasks. We retained only its four-option single-choice questions and did random partitioning. We used an evaluation scheme similar to C-Eval.
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) is a challenging task subset of Big-Bench. Big-Bench currently includes 204 tasks. Task themes involve linguistics, child development, mathematics, common sense reasoning, biology, physics, societal biases, software development, etc. BBH consists of benchmark tasks extracted from the 204 Big-Bench tasks in which large models did not perform well.
 
-### 7B 模型结果
+### 7B Model Results
 |               | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |               |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -72,7 +72,7 @@ In the general domain, we conducted 5-shot tests on the following datasets:
 
 
 
-### 13B 模型结果
+### 13B Model Results
 |                     | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |                     |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -101,7 +101,7 @@ In the medical domain, we used medical-related subjects from general domain data
 We conducted 5-shot tests on the above datasets.
 
 
-### 7B 模型结果
+### 7B Model Results
 
 |             | **JEC-QA** | **CEval-MMLU-CMMLU** | **MedQA-USMLE** | **MedQA-MCMLE** | **MedMCQA** |
 |:---------------------:|:----------:|:--------------------:|:---------------:|:---------------:|:-----------:|
@@ -117,7 +117,7 @@ We conducted 5-shot tests on the above datasets.
 | **Baichuan2-7B-Base** | 44.46      | 56.39                | 32.68           | 54.93           | 41.73       |
 
 
-### 13B 模型结果
+### 13B Model Results
 |                  | **JEC-QA** | **CEval-MMLU-CMMLU** | **MedQA-USMLE** | **MedQA-MCMLE** | **MedMCQA** |
 |:---------------------------:|:----------:|:--------------------:|:---------------:|:---------------:|:-----------:|
 |                   | 5-shot     |  5-shot              |  5-shot         |  5-shot         | 5-shot      |
@@ -141,7 +141,7 @@ For the code domain, we used the [HumanEval](https://huggingface.co/datasets/ope
 - Tasks in HumanEval include programming tasks encompassing language understanding, reasoning, algorithms, and basic math to evaluate the functional correctness of models and measure their problem-solving capability.
 - MBPP consists of a dataset with 974 Python short functions, textual descriptions of programs, and test cases to check their functional correctness.
 
-### 7B 模型结果
+### 7B Model Results
 |               | **GSM8K** | **MATH** | **HumanEval** | **MBPP** |
 |:---------------------:|:---------:|:--------:|:-------------:|:--------:|
 |               |  4-shot   | 4-shot   |  0-shot       |  3-shot  |
@@ -155,7 +155,7 @@ For the code domain, we used the [HumanEval](https://huggingface.co/datasets/ope
 | **Baichuan-7B**       |   9.17    | 2.54     | 9.20          |   6.60   |
 | **Baichuan2-7B-Base**      |   24.49   | 5.58     | 18.29         |  24.20   |
 
-### 13B 模型结果
+### 13B Model Results
 
 |                     | **GSM8K** | **MATH** | **HumanEval** | **MBPP** |
 |:---------------------------:|:---------:|:--------:|:-------------:|:--------:|
@@ -173,7 +173,7 @@ For the code domain, we used the [HumanEval](https://huggingface.co/datasets/ope
 ## Multilingual
 We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) dataset to evaluate the multilingual capability of the model. Flores-101 covers 101 languages from around the world. Its data comes from various domains including news, travel guides, and books. We chose the official languages of the United Nations (Arabic, Chinese, English, French, Russian, and Spanish) as well as German and Japanese for testing. Using OpenCompass, we performed 8-shot tests on seven sub-tasks within Flores-101: Chinese-English, Chinese-French, Chinese-Spanish, Chinese-Arabic, Chinese-Russian, Chinese-Japanese, and Chinese-German.
 
-### 7B 模型结果
+### 7B Model Results
 
 |               | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
 |:---------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
@@ -188,7 +188,7 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 | **Baichuan2-7B-Base**      | 27.27   | 20.87   | 16.17     | 1.39      | 11.21   | 3.11    | 12.76   |
 
 
-### 13B 模型结果
+### 13B Model Results
 
 |                             | **中-英** | **中-法** | **中-西班牙** | **中-阿拉伯** | **中-俄** | **中-日** | **中-德** |
 |:---------------------------:|:-------:|:-------:|:---------:|:---------:|:-------:|:-------:|:-------:|
@@ -342,39 +342,40 @@ Translate: I hope through the joint efforts of everyone, we can look forward to 
 > Enviroment and params used in testing:
 
 
-## 量化部署
+## Quantization Deployment
 
-为了让不同的用户以及不同的平台都能运行 Baichuan2 模型，我们针对 Baichuan2 模型做了相应地量化工作（包括 Baichuan2-7B-Chat 和 Baichuan2-13B-Chat），方便用户快速高效地在自己的平台部署 Baichuan2 模型。
+To allow different users and platforms to run the Baichuan2 model, we have carried out quantization for the Baichuan2 model (including Baichuan2-7B-Chat and Baichuan2-13B-Chat). This facilitates users to quickly and efficiently deploy the Baichuan2 model on their respective platforms.
 
-### 量化方法
+### Quantization Method
 
-Baichuan2 的采用社区主流的量化方法：[BitsAndBytes](https://github.com/TimDettmers/bitsandbytes)方法。该方法可以保证量化后的效果基本不掉点，目前已经集成到 transformers 库里，并在社区得到了广泛应用。BitsAndBytes 支持 4bits 和 8bits 两种量化，其中 4bits 支持 FP4 和 NF4 两种格式，Baichuan2 选用 NF4 作为 4bits 量化的数据类型。  
-  
-基于该量化方法，Baichuan2支持在线量化和离线量化两种模式。
+Baichuan2 utilizes the widely-adopted community quantization method: the [BitsAndBytes](https://github.com/TimDettmers/bitsandbytes) method. This method ensures that the performance remains largely unchanged after quantization. It has now been integrated into the transformers library and is widely used in the community. BitsAndBytes supports both 4bits and 8bits quantization. Within the 4bits option, it provides FP4 and NF4 formats, with Baichuan2 selecting NF4 as its 4bits quantization data type.
 
-### 在线量化
+Based on this quantization method, Baichuan2 supports both online and offline quantization modes.
 
-对于在线量化，我们支持 8bits 和 4bits 量化，使用方式和 [Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat) 项目中的方式类似，只需要先加载模型到 CPU 的内存里，再调用`quantize()`接口量化，最后调用 `cuda()`函数，将量化后的权重拷贝到 GPU 显存中。实现整个模型加载的代码非常简单，我们以 Baichuan2-7B-Chat 为例：
+### Online Quantization
 
-8bits 在线量化:
+For online quantization, we support both 8bits and 4bits. The usage is similar to the method described in the [Baichuan-13B](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat) project. One simply needs to first load the model into the CPU memory, then invoke the `quantize()` method, and finally call the `cuda()` function to copy the quantized weights to the GPU memory. The code for loading the entire model is straightforward. Let's take Baichuan2-7B-Chat as an example:
+
+8bits online quantization:
 ```python
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
 model = model.quantize(8).cuda() 
 ```
-4bits 在线量化:
+4bits online quantization:
 ```python
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float16, trust_remote_code=True)
 model = model.quantize(4).cuda() 
 ```
-需要注意的是，在用 `from_pretrained` 接口的时候，用户一般会加上 `device_map = "auto"`，在使用在线量化时，需要去掉这个参数，否则会报错。
+It's worth noting that when using the `from_pretrained` interface, users typically add `device_map = "auto"`. However, when using online quantization, this parameter should be removed; otherwise, an error will occur.
 
-### 离线量化
-为了方便用户的使用，我们提供了离线量化好的 4bits 的版本 [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main)，供用户下载。
-用户加载 Baichuan2-7B-Chat-4bits 模型很简单，只需要执行:
+### Offline Quantization
+
+To facilitate user adoption, we offer a pre-quantized 4bits version: [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits/tree/main) for download. 
+Loading the Baichuan2-7B-Chat-4bits model is straightforward, just execute:
 ```python
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bits", device_map="auto", trust_remote_code=True)
 ```
-对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
+For 8bits offline quantization, we haven't provided a corresponding version since the HuggingFace transformers library offers the necessary API interfaces. This makes the saving and loading of 8bits quantized models very convenient. Users can implement the saving and loading of 8bits models in the following manner:
 ```python
 #模型保存，其中model_id为原始模型目录，quant8_saved_dir为8bits量化后的模型保存目录
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
@@ -383,15 +384,15 @@ model.save_pretrained(quant8_saved_dir)
 #模型加载
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
 ```
-### 量化效果
-量化前后显存占用对比：
+### Quantization Effect
+Comparison of memory usage before and after quantization:
 | Precision   | Baichuan2-7B GPU Mem (GB) |Baichuan2-13B GPU Mem (GB) |
 |-------------|:------------:|:------------:|
 | bf16 / fp16 | 14.0         | 25.9       |
 | 8bits        | 8.0         | 14.2        |
 | 4bits        | 5.1          | 8.6        |
 
-量化后在各个 benchmark 上的结果和原始版本对比如下：
+The results on various benchmarks after quantization compared to the original version are as follows:
 
 | Model 5-shot           | C-Eval | MMLU | CMMLU |
 |------------------------|:------:|:----:|:-----:|
@@ -400,7 +401,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 
-可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
+It can be seen that the 4bits, compared to bfloat16, has a drop of around 1~2 percents.
 
 ## CPU Deployment
 Baichuan-13B supports CPU inference, but it should be emphasized that the inference speed on CPU will be very slow. Modify the model loading logic as follows:
@@ -423,24 +424,22 @@ model['lm_head.weight'] = lm_head_w
 torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
 ```
 
+# Fine-tuning the Model
 
-# 对模型进行微调
-
-## 依赖安装
+## Dependency Installation
 ```shell
 git clone https://github.com/baichuan-inc/Baichuan2.git
 cd Baichuan2/fine-tune
 pip install -r requirements.txt
 ```
-- 如需使用 LoRA 等轻量级微调方法需额外安装 [peft](https://github.com/huggingface/peft)
-- 如需使用 xFormers 进行训练加速需额外安装 [xFormers](https://github.com/facebookresearch/xformers)
+- To use lightweight fine-tuning methods like LoRA, you must additionally install [peft](https://github.com/huggingface/peft).
+- To accelerate training with xFormers, you must additionally install [xFormers](https://github.com/facebookresearch/xformers).
 
-## 单机训练
+## Single Machine Training
 
-下面我们给一个微调 Baichuan2-7B-Base 的单机训练例子。
+Below, we provide an example of fine-tuning the Baichuan2-7B-Base on a single machine.
 
-训练数据：`data/belle_chat_ramdon_10k.json`，该样例数据是从 [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M) 采样出 1 万条，并且做了格式转换。主要是展示多轮数据怎么训练，不保证效果。
-
+Training Data: `data/belle_chat_ramdon_10k.json`. This sample data was drawn from [multiturn_chat_0.8M](https://huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M), consisting of a selection of 10,000 entries, and has been reformatted. The main purpose is to demonstrate how to train with multi-turn data, and effectiveness is not guaranteed.
 
 ```shell
 hostfile=""
@@ -469,16 +468,17 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
     --tf32 True
 ```
 
-## 多机训练
+## Multi-machine Training
 
-多机训练只需要给一下 hostfile ，内容如下：
+For multi-machine training, you only need to provide the hostfile, the content of which is as follows:
 ```
 ip1 slots=8
 ip2 slots=8
 ip3 slots=8
 ip4 slots=8
 ```
-同时在训练脚本里面指定 hosftfile 的路径：
+
+At the same time, specify the path of the hostfile in the training script:
 ```shell
 hostfile="/path/to/hostfile"
 deepspeed --hostfile=$hostfile fine-tune.py  \
@@ -506,14 +506,14 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
     --tf32 True
 ```
 
-## 轻量化微调
+## Lightweight Fine-tuning
 
-代码已经支持轻量化微调如 LoRA，如需使用仅需在上面的脚本中加入以下参数
+The code already supports lightweight fine-tuning such as LoRA. If you need to use it, simply add the following parameters to the script mentioned above.
 ```shell
 --use_lora True
 ```
-LoRA 具体的配置可见 `fine-tune.py` 脚本。
-使用 LoRA 微调后可以使用下面的命令加载模型
+Specific configurations for LoRA can be found in the fine-tune.py script.
+After fine-tuning with LoRA, you can load the model using the command below:
 ```python
 from peft import AutoPeftModelForCausalLM
 model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=True)
