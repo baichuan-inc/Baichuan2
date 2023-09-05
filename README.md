@@ -531,7 +531,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 我们提供了 Baichuan2-7B-Base 模型在训练了 0.22 ~ 2.64 万亿 Tokens 过程中的 12 个历史 checkpoint（[下载地址](http://hugging-face.co/baichuan-inc/Baichuan-7B-Base)），供研究使用。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果。
 ![checkpoint](media/checkpoint.jpeg)
 
-# 社区支持
+# 社区和生态
 
 ## 华为昇腾
 **昇腾NPU微调**：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)。13B 支持正在开发中。
@@ -542,6 +542,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 **大模型体验平台**：[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan) 大模型能力开放给公众，欢迎大家使用。
 
+**我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 # 声明
 
