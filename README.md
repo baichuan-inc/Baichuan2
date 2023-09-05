@@ -34,7 +34,7 @@
 
 # 模型介绍
 
-Baichuan2 是百川智能推出的新一代开源大语言模型，采用 2.64 万亿  Tokens 的高质量语料训练，在权威的中文和英文 benchmark 上均取得同尺寸最好的效果。本次发布包含有 7B、13B 的 Base 和 Chat 版本，并提供了 Chat 版本的 4bits 量化，所有版本不仅对学术研究完全开放，开发者也仅需邮件申请并获得官方商用许可后，即可以免费商用。具体发布版本和下载见下表：
+Baichuan2 是百川智能推出的新一代开源大语言模型，采用 2.6 万亿  Tokens 的高质量语料训练，在权威的中文和英文 benchmark 上均取得同尺寸最好的效果。本次发布包含有 7B、13B 的 Base 和 Chat 版本，并提供了 Chat 版本的 4bits 量化，所有版本不仅对学术研究完全开放，开发者也仅需邮件申请并获得官方商用许可后，即可以免费商用。具体发布版本和下载见下表：
 |         | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
 |:-------:|:-------:|:-------:|:-----------------:|
 | 7B      | 🤗 [Baichuan2-7B-Base](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base) | 🤗 [Baichuan2-7B-Chat](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat) | 🤗 [Baichuan2-7B-Chat-4bits](https://huggingface.co/baichuan-inc/Baichuan2-7B-Chat-4bits) |
@@ -460,12 +460,13 @@ deepspeed --hostfile=$hostfile fine-tune.py  \
 
 ## 多机训练
 
-多机训练只需要给一下 hostfile ，内容如下：
+多机训练只需要给一下 hostfile ，内容类似如下：
 ```
 ip1 slots=8
 ip2 slots=8
 ip3 slots=8
 ip4 slots=8
+....
 ```
 同时在训练脚本里面指定 hosftfile 的路径：
 ```shell
@@ -510,7 +511,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # Intermediate Checkpoints
-除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint（分别对应训练了 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
+除了训练了 2.6 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 intermediate checkpoints（分别对应训练了约 0.2 ~ 2.4 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoints 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
 
 ![checkpoint](media/checkpoints.jpeg)
 
