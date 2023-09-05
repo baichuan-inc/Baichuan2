@@ -214,13 +214,13 @@ Baichuan2模型支持CPU推理，但需要强调的是，CPU的推理速度相�
 #以Baichuan2-7B-Chat为例
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
-## Baichuan2相对Baichuan1推理迁移
-由于很多用户在Baichuan1上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于Baichuan2，用户可以对Baichuan2模型做1个离线转换，转换后就可以当做Baichuan1模型来使用。具体来说，用户只需要利用以下脚本离线对Baichuan2模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对Baichuan1模型一样对转换后的模型做编译优化等工作了。
+## Baichuan2 相对 Baichuan 推理迁移
+由于很多用户在 Baichuan(Baichuan-7B, Baichuan-13B)上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于 Baichuan2，用户可以对 Baichuan2 模型做一个离线转换，转换后就可以当做 Baichuan 模型来使用。具体来说，用户只需要利用以下脚本离线对 Baichuan2 模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对 Baichuan 模型一样对转换后的模型做编译优化等工作了。
 ```python
 import torch
 import os
 ori_model_dir = 'your baichuan2 model directory'
-#为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
+# 为了不覆盖原始模型，最好将转换后的模型save到另一个目录再替换
 new_model_dir = 'your normalized lm_head weight baichuan2 model directory'
 model = torch.load(os.path.join(ori_model_dir, 'pytorch_model.bin'))
 lm_head_w = model['lm_head.weight']
