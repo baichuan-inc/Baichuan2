@@ -542,7 +542,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 **大模型体验平台**：[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan) 大模型能力开放给公众，欢迎大家使用。
 
-**我们会在此持续更新社区和生态对 Baichuan2 的支持。**
+📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 # 声明
 
