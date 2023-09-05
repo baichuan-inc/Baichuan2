@@ -50,9 +50,6 @@ Baichuan2 是由百川智能继 Baichuan-7B 和 Baichuan-13B 之后做出的更�
 我们在通用、法律、医疗、数学、代码和多语言翻译六个领域的中英文权威数据集上对模型进行了广泛测试。
 
 
-
->*表示模型结果从其官方获取。
-
 ## 通用领域
 在通用领域我们在以下数据集上进行了5-shot测试。
 - [C-Eval](https://cevalbenchmark.com/index.html#home) 是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行测试。我们采用了[Baichuan-7B](https://github.com/baichuan-inc/Baichuan-7B/tree/main)的评测方案；
