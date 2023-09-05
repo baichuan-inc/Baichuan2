@@ -3,7 +3,7 @@
 
 <div align="center">
 <h1>
-  Baichuan2 (7B/13B)
+  Baichuan2
 </h1>
 </div>
 
