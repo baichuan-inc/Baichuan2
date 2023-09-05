@@ -57,6 +57,7 @@ In the general domain, we conducted 5-shot tests on the following datasets:
 - [BBH](https://huggingface.co/datasets/lukaemon/bbh) is a challenging task subset of Big-Bench. Big-Bench currently includes 204 tasks. Task themes involve linguistics, child development, mathematics, common sense reasoning, biology, physics, societal biases, software development, etc. BBH consists of benchmark tasks extracted from the 204 Big-Bench tasks in which large models did not perform well.
 
 ### 7B Model Results
+
 |               | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |               |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -70,9 +71,8 @@ In the general domain, we conducted 5-shot tests on the following datasets:
 | **Baichuan-7B**       | 42.80      | 42.30    | 44.02     | 36.34      | 34.44       | 32.48   |
 | **Baichuan2-7B-Base**      | 54.00      | 54.16    | 57.07     | 47.47      | 42.73       | 41.56   |
 
-
-
 ### 13B Model Results
+
 |                     | **C-Eval** | **MMLU** | **CMMLU** | **Gaokao** | **AGIEval** | **BBH** |
 |:---------------------------:|:----------:|:--------:|:---------:|:----------:|:-----------:|:-------:|
 |                     |  5-shot    |  5-shot  |  5-shot   | 5-shot     | 5-shot      | 3-shot  |
@@ -88,6 +88,7 @@ In the general domain, we conducted 5-shot tests on the following datasets:
 
 
 ## Law and Medicine
+
 In the legal domain, we used the [JEC-QA](https://jecqa.thunlp.org/) dataset. The JEC-QA dataset originates from China's National Judicial Examination. We retained only the multiple-choice questions from it. Our evaluation method was similar to that of C-Eval.
 
 In the medical domain, we used medical-related subjects from general domain datasets (C-Eval, MMLU, CMMLU), as well as [MedQA](https://arxiv.org/abs/2009.13081) and [MedMCQA](https://medmcqa.github.io/). We followed an evaluation scheme similar to C-Eval.
@@ -99,7 +100,6 @@ In the medical domain, we used medical-related subjects from general domain data
     - CMMLU: anatomy, clinical_knowledge, college_medicine, genetics, nutrition, traditional_chinese_medicine, virology 
 
 We conducted 5-shot tests on the above datasets.
-
 
 ### 7B Model Results
 
@@ -116,8 +116,8 @@ We conducted 5-shot tests on the above datasets.
 | **Baichuan-7B**       | 34.64      | 42.37                | 27.42           | 39.46           | 31.39       |
 | **Baichuan2-7B-Base** | 44.46      | 56.39                | 32.68           | 54.93           | 41.73       |
 
-
 ### 13B Model Results
+
 |                  | **JEC-QA** | **CEval-MMLU-CMMLU** | **MedQA-USMLE** | **MedQA-MCMLE** | **MedMCQA** |
 |:---------------------------:|:----------:|:--------------------:|:---------------:|:---------------:|:-----------:|
 |                   | 5-shot     |  5-shot              |  5-shot         |  5-shot         | 5-shot      |
@@ -132,6 +132,7 @@ We conducted 5-shot tests on the above datasets.
 | **Baichuan2-13B-Base**      | 47.40      | 59.33                | 40.38           | 61.62           | 42.86       |
 
 ## Mathematics and Code
+
 In the mathematics domain, we used the [OpenCompass](https://opencompass.org.cn/) evaluation framework and conducted 4-shot tests on the [GSM8K](https://huggingface.co/datasets/gsm8k) and [MATH](https://huggingface.co/datasets/competition_math) datasets.
 
 - GSM8K is a dataset released by OpenAI, consisting of 8.5K high-quality linguistically diverse elementary school math application questions. It requires selecting the most reasonable solution based on a given scenario and two possible solutions.
@@ -142,6 +143,7 @@ For the code domain, we used the [HumanEval](https://huggingface.co/datasets/ope
 - MBPP consists of a dataset with 974 Python short functions, textual descriptions of programs, and test cases to check their functional correctness.
 
 ### 7B Model Results
+
 |               | **GSM8K** | **MATH** | **HumanEval** | **MBPP** |
 |:---------------------:|:---------:|:--------:|:-------------:|:--------:|
 |               |  4-shot   | 4-shot   |  0-shot       |  3-shot  |
@@ -171,6 +173,7 @@ For the code domain, we used the [HumanEval](https://huggingface.co/datasets/ope
 | **Baichuan2-13B-Base**           |   52.77   | 10.08    | 17.07         |  30.20   |
 
 ## Multilingual
+
 We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) dataset to evaluate the multilingual capability of the model. Flores-101 covers 101 languages from around the world. Its data comes from various domains including news, travel guides, and books. We chose the official languages of the United Nations (Arabic, Chinese, English, French, Russian, and Spanish) as well as German and Japanese for testing. Using OpenCompass, we performed 8-shot tests on seven sub-tasks within Flores-101: Chinese-English, Chinese-French, Chinese-Spanish, Chinese-Arabic, Chinese-Russian, Chinese-Japanese, and Chinese-German.
 
 ### 7B Model Results
@@ -186,7 +189,6 @@ We used the [Flores-101](https://huggingface.co/datasets/facebook/flores) datase
 | **ChatGLM2-6B**       | 22.28   | 9.42    | 7.77      | 0.64      | 1.78    | 0.26    | 4.61    |
 | **Baichuan-7B**       | 25.07   | 16.51   | 12.72     | 0.41      | 6.66    | 2.24    | 9.86    |
 | **Baichuan2-7B-Base**      | 27.27   | 20.87   | 16.17     | 1.39      | 11.21   | 3.11    | 12.76   |
-
 
 ### 13B Model Results
 
@@ -230,7 +232,6 @@ pip install -r requirements.txt
 ```
 
 > In the above code, the model loading specifies `device_map='auto'`, which will use all available GPUs. If you need to specify the device(s) to use, you can control it in a way similar to `export CUDA_VISIBLE_DEVICES=0,1` (using the 0 and 1 graphics cards).
-
 
 ## Command Line Tool Inference
 
@@ -331,7 +332,6 @@ Translate: I hope through the joint efforts of everyone, we can look forward to 
 ```
 </details>
 
-
 ## Quantization Deployment
 
 To allow different users and platforms to run the Baichuan2 model, we have carried out quantization for the Baichuan2 model (including Baichuan2-7B-Chat and Baichuan2-13B-Chat). This facilitates users to quickly and efficiently deploy the Baichuan2 model on their respective platforms.
@@ -394,12 +394,15 @@ The results on various benchmarks after quantization compared to the original ve
 It can be seen that the 4bits, compared to bfloat16, has a drop of around 1~2 percents.
 
 ## CPU Deployment
+
 Baichuan-13B supports CPU inference, but it should be emphasized that the inference speed on CPU will be very slow. Modify the model loading logic as follows:
 ```python
 #以Baichuan2-7B-Chat为例
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
+
 ## Migrating Inference Optimizations from Baichuan to Baichuan2
+
 Given that many users have made various optimizations on Baichuan (Baichuan-7B, Baichuan-13B), such as compilation optimizations, quantization, etc., to seamlessly apply these enhancements to Baichuan2, users can perform an offline conversion on the Baichuan2 model. After this conversion, it can be treated as a Baichuan model. Specifically, users only need to use the script below to offline normalize the last `lm_head` layer of the Baichuan2 model and replace the "lm_head.weight". Once replaced, optimizations such as compilation can be applied to the converted model just like with the Baichuan model.
 ```python
 import torch
@@ -417,6 +420,7 @@ torch.save(model, os.path.join(new_model_dir, 'pytorch_model.bin'))
 # Fine-tuning the Model
 
 ## Dependency Installation
+
 ```shell
 git clone https://github.com/baichuan-inc/Baichuan2.git
 cd Baichuan2/fine-tune
@@ -503,6 +507,7 @@ The code already supports lightweight fine-tuning such as LoRA. If you need to u
 --use_lora True
 ```
 Specific configurations for LoRA can be found in the fine-tune.py script.
+
 After fine-tuning with LoRA, you can load the model using the command below:
 ```python
 from peft import AutoPeftModelForCausalLM
@@ -519,22 +524,28 @@ In addition to the Baichuan2-7B-Base model with 2.64 trillion tokens, we also pr
 📢📢📢 **We will continuously update the support for Baichuan2 from the community and ecosystem here.**
 
 ## Huawei Ascend
+
 ### Pytorch Framework
+
 Model Fine-tuning: Baichuan2 supports model fine-tuning based on Ascend NPU using PyTorch + DeepSpeed. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B). Baichuan2-13B is under adaptation.
 
 Inference Deployment: Baichuan2 supports Ascend NPU inference. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b), [Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b).
 
 ### MindSpore Framework
+
 [MindFormers](https://gitee.com/mindspore/mindformers) is a comprehensive development suite based on the MindSpore framework that supports large model training, fine-tuning, evaluation, inference, and deployment. [Baichuan2-7B / 13B](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) has been integrated into this suite, supporting users in model fine-tuning and deployment. For specific usage, please see the [README](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md).
 
 ### Large Model Experience Platform
+
 [Ascend Large Model Platform](https://xihe.mindspore.cn) based on Ascend's MindSpore AI framework, MindFormers large model development suite, and Ascend hardware computing power, has opened the capabilities of the [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) large model to the public. Everyone is welcome to experience it online.
 
 
-# Disclaimer
+# Disclaimer and License
+
+## Disclaimer
 We hereby declare that our team has not developed any applications based on Baichuan2 models, not on iOS, Android, the web, or any other platform. We strongly call on all users not to use Baichuan2 models for any activities that harm national / social security or violate the law. Also, we ask users not to use Baichuan2 models for Internet services that have not undergone appropriate security reviews and filings. We hope that all users can abide by this principle and ensure that the development of technology proceeds in a regulated and legal environment.
 
 We have done our best to ensure the compliance of the data used in the model training process. However, despite our considerable efforts, there may still be some unforeseeable issues due to the complexity of the model and data. Therefore, if any problems arise due to the use of Baichuan2 open-source models, including but not limited to data security issues, public opinion risks, or any risks and problems brought about by the model being misled, abused, spread or improperly exploited, we will not assume any responsibility.
 
-# License
+## License
 The use of the source code in this repository follows the open-source license [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE). Community use of the Baichuan2 model must adhere to the [Baichuan2 Model License Agreement](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/blob/main/Baichuan2%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf). Baichuan2 supports commercial use. If you are using the Baichuan2 model or its derivatives for commercial purposes, please contact the licensor in the following manner for registration and to apply for written authorization: Email <opensource@baichuan-inc.com>.
