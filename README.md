@@ -533,6 +533,8 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 # 社区和生态
 
+📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
+
 ## 华为昇腾
 **昇腾NPU微调**：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)。13B 支持正在开发中。
 
@@ -542,7 +544,6 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 **大模型体验平台**：[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan) 大模型能力开放给公众，欢迎大家使用。
 
-📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 # 声明
 
