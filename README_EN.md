@@ -34,7 +34,7 @@
 
 # Introduction
 
-Baichuan2 is the new generation of open-source large language models launched by Baichuan Intelligent Technology. It was trained on a high-quality corpus with 2.6 trillion tokens, achieving the best results in both Chinese and English benchmarks of the same scale. This release includes Base and Chat versions for 7B and 13B, and a 4bits quantized version for the Chat model. All versions are fully open to academic research. Developers only need to apply via email and obtain official commercial permission to use it for free commercially. The specific released versions and download links are shown in the table below:
+Baichuan2 is the new generation of open-source large language models launched by Baichuan Intelligent Technology. It was trained on a high-quality corpus with **2.6 trillion** tokens, achieving the best results in both Chinese and English benchmarks of the same scale. This release includes Base and Chat versions for 7B and 13B, and a 4bits quantized version for the Chat model. All versions are fully open to academic research. Developers only need to apply via email and obtain official commercial permission to use it for free commercially. The specific released versions and download links are shown in the table below:
 
 |         | Base Models  | Aligned Models | Aligned Models 4bits Quantized |
 |:-------:|:-----------:|:-------------:|:-----------------------------:|
