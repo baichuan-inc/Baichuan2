@@ -244,11 +244,6 @@ TODO 改一个新的case
 ```shell
 python cli_demo.py
 ```
-最后输出示例如下：
-
-<p align="center">
-    <img src="media/cn-cli.png" width="70%"/>
-</p>
 
 ## 网页 demo 方式
 
@@ -258,44 +253,88 @@ python cli_demo.py
 streamlit run web_demo.py
 ```
 
-效果如下：
-
-<p align="center">
-    <img src="media/cn-web.gif" width="70%"/>
-</p>
-
 ## Baichuan-13B-Chat 示例输出
 
-<details><summary><b>内容创作</b></summary>
+<details><summary><b>代码书写</b></summary>
 
 ```
-用户：
+User：写python代码，找到下列数组的中位数[3.1,6.2,1.3,8.4,10.5,11.6,2.1,5.9]
+
+Baichuan2:
+首先，我们需要对数组进行排序。然后，我们检查数组的元素个数是否等于奇数还是偶数，以确定中位数的计算方法。最后，返回中位数。
+以下是实现这个功能的Python代码：
+def find_median(arr):
+    arr.sort()
+    length = len(arr)
+
+    if length % 2 == 0:
+        median1 = arr[length // 2]
+        median2 = arr[length // 2 - 1]
+        median = (median1 + median2) / 2
+    else:
+        median = arr[length // 2]
+    return median
+Example usage:
+arr = [3.1, 6.2, 1.3, 8.4, 10.5, 11.6, 2.1, 5.9]
+print(find_median(arr))
+在这个例子中，数组 [3.1, 6.2, 1.3, 8.4, 10.5, 11.6, 2.1, 5.9] 的中位数是 6.05。
 
 ```
 
 </details>
 
-<details><summary><b>广告文案</b></summary>
+<details><summary><b>数学问题</b></summary>
   
 ```
-用户：
+User：
+鸡和兔在一个笼子里，共有35个头，94只脚，那么鸡有多少只，兔有多少只？
+
+Baichuan2:
+我们可以用代数方法来解决这个问题。设鸡的数量为x，兔子的数量为y。
+根据题意我们可以得到以下两个方程：
+1. x + y = 35 (头的总数)
+2. 2x + 4y = 94 (脚的总数)
+我们可以先求解第一个方程，得到 y = 35 - x。然后将这个结果代入第二个方程：
+2x + 4(35 - x) = 94
+化简后得到：
+2x + 140 - 4x = 94
+进一步整理得：
+-2x = -46
+所以 x = 23。这意味着有23只鸡。将 x 的值代回第一个方程，我们得到：
+23 + y = 35
+解得：
+y = 12
+所以，笼子里共有23只鸡和12只兔子。
 ```
 
 </details>
 
-<details><summary><b>精准问答</b></summary>
+<details><summary><b>指令跟随</b></summary>
 
 ```
-用户：
-世界上第二高的山是什么山
-```
+User：
+从现在开始，你会翻译我说的每一句话，并且翻译的之前面都带上“translate：”，准备好了吗？
 
-</details>
+Baichuan2:
+好的，我已经准备好为您翻译了。请随时开始说话，我会尽力准确翻译您的内容。
 
-<details><summary><b>语言理解</b></summary>
+User：
+你好
 
-```
-用户：
+Baichuan2:
+Translate: Hello.
+
+User：
+我是Baichuan2，很高兴认识大家
+
+Baichuan2:
+Translate: Hi, I am Baichuan2, nice to meet you all.
+
+User：
+希望通过大家的共同努力，早日迎接AGI时代的到来
+
+Baichuan2:
+Translate: I hope through the joint efforts of everyone, we can look forward to the arrival of the AGI era sooner.
 ```
 </details>
 
