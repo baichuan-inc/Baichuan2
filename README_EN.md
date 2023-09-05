@@ -24,14 +24,13 @@
 
 # Table of Contents
 
-- [Introduction](#Introduction)
-- [Benchmark Results](#Benchmark-Results)
-- [Inference and Deployment](#Inference-and-Deployment)
-- [Fine-tuning the Model](#Fine-tuning-the-Model)
-- [Intermediate Checkpoints](#Intermediate-Checkpoints)
-- [Community and Ecosystem](#Community-and-Ecosystem)
-- [Disclaimer](#Disclaimer)
-- [License](#License)
+- [📖 Introduction](#Introduction)
+- [🔥🔥📊 Benchmark Results](#Benchmark-Results)
+- [⚙️ Inference and Deployment](#Inference-and-Deployment)
+- [🛠️ Fine-tuning the Model](#Fine-tuning-the-Model)
+- [🔥🔥💾 Intermediate Checkpoints](#Intermediate-Checkpoints)
+- [👥 Community and Ecosystem](#Community-and-Ecosystem)
+- [📜 Disclaimer and License](#Disclaimer-and-License)
 
 # Introduction
 
