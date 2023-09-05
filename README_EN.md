@@ -402,14 +402,14 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 
 可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
 
-## CPU 部署
-Baichuan2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
+## CPU Deployment
+Baichuan-13B supports CPU inference, but it should be emphasized that the inference speed on CPU will be very slow. Modify the model loading logic as follows:
 ```python
 #以Baichuan2-7B-Chat为例
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
-## Baichuan2 相对 Baichuan 推理迁移
-由于很多用户在 Baichuan(Baichuan-7B, Baichuan-13B)上做了很多优化的工作，例如编译优化、量化等，为了将这些工作零成本地应用于 Baichuan2，用户可以对 Baichuan2 模型做一个离线转换，转换后就可以当做 Baichuan 模型来使用。具体来说，用户只需要利用以下脚本离线对 Baichuan2 模型的最后一层lm_head做归一化，并替换掉”lm_head.weight“即可。替换完后，就可以像对 Baichuan 模型一样对转换后的模型做编译优化等工作了。
+## Migrating Inference Optimizations from Baichuan to Baichuan2
+Given that many users have made various optimizations on Baichuan (Baichuan-7B, Baichuan-13B), such as compilation optimizations, quantization, etc., to seamlessly apply these enhancements to Baichuan2, users can perform an offline conversion on the Baichuan2 model. After this conversion, it can be treated as a Baichuan model. Specifically, users only need to use the script below to offline normalize the last `lm_head` layer of the Baichuan2 model and replace the "lm_head.weight". Once replaced, optimizations such as compilation can be applied to the converted model just like with the Baichuan model.
 ```python
 import torch
 import os
@@ -520,25 +520,25 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # Intermediate Checkpoints
-除了训练了 2.64 万亿 Tokens 的 Baichuan2-7B-Base 模型，我们还提供了在此之前的另外 11 个 checkpoint（分别对应训练了 0.22 ~ 2.42 万亿 Tokens）供社区研究使用（[下载地址](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)）。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果变化：
+In addition to the Baichuan2-7B-Base model with 2.64 trillion tokens, we also provide 11 other checkpoints (ranging from 0.22 to 2.42 trillion tokens) from before this for community research ([Download link](https://huggingface.co/baichuan-inc/Baichuan2-7B-Intermediate-Checkpoints)). The chart below shows the performance changes of these checkpoints on the C-Eval, MMLU, and CMMLU benchmarks:
 
 ![checkpoint](media/checkpoints.jpeg)
 
-# 社区和生态
+# Community and Ecosystem
 
-📢📢📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
+📢📢📢 **We will continuously update the support for Baichuan2 from the community and ecosystem here.**
 
-## 华为昇腾
-### Pytorch 框架
-模型微调：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)、Baichuan2-13B 正在适配中。
+## Huawei Ascend
+### Pytorch Framework
+Model Fine-tuning: Baichuan2 supports model fine-tuning based on Ascend NPU using PyTorch + DeepSpeed. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B). Baichuan2-13B is under adaptation.
 
-推理部署：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
+Inference Deployment: Baichuan2 supports Ascend NPU inference. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b), [Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b).
 
-### MindSpore 框架
-[MindFormers]( https://gitee.com/mindspore/mindformers) 是一个基于昇思框架（MindSpore）并支持大模型训练、微调、评估、推理、部署的全流程开发套件，[Baichuan2-7B / 13B]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) 已集成于此套件，支持用户进行模型微调、部署，具体使用方式可见 [README]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md)。
+### MindSpore Framework
+[MindFormers](https://gitee.com/mindspore/mindformers) is a comprehensive development suite based on the MindSpore framework that supports large model training, fine-tuning, evaluation, inference, and deployment. [Baichuan2-7B / 13B](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) has been integrated into this suite, supporting users in model fine-tuning and deployment. For specific usage, please see the [README](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md).
 
-### 大模型体验平台
-[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) 大模型能力开放给公众，欢迎大家在线体验。
+### Large Model Experience Platform
+[Ascend Large Model Platform](https://xihe.mindspore.cn) based on Ascend's MindSpore AI framework, MindFormers large model development suite, and Ascend hardware computing power, has opened the capabilities of the [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) large model to the public. Everyone is welcome to experience it online.
 
 
 # Disclaimer
@@ -547,4 +547,4 @@ We hereby declare that our team has not developed any applications based on Baic
 We have done our best to ensure the compliance of the data used in the model training process. However, despite our considerable efforts, there may still be some unforeseeable issues due to the complexity of the model and data. Therefore, if any problems arise due to the use of Baichuan2 open-source models, including but not limited to data security issues, public opinion risks, or any risks and problems brought about by the model being misled, abused, spread or improperly exploited, we will not assume any responsibility.
 
 # License
-对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)。对 Baichuan2 模型的社区使用需遵循[《Baichuan2 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/blob/main/Baichuan2%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan2 支持商用。如果将 Baichuan2 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱 <opensource@baichuan-inc.com>。
+The use of the source code in this repository follows the open-source license [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE). Community use of the Baichuan2 model must adhere to the [Baichuan2 Model License Agreement](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/blob/main/Baichuan2%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf). Baichuan2 supports commercial use. If you are using the Baichuan2 model or its derivatives for commercial purposes, please contact the licensor in the following manner for registration and to apply for written authorization: Email <opensource@baichuan-inc.com>.
