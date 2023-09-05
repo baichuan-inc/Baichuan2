@@ -3,7 +3,7 @@
 
 <div align="center">
 <h1>
-  Baichuan2
+  Baichuan2 (7B/13B)
 </h1>
 </div>
 
@@ -25,10 +25,10 @@
 # Table of Contents
 
 - [📖 Introduction](#Introduction)
-- [🔥🔥📊 Benchmark Results](#Benchmark-Results)
+- [📊 Benchmark Results 🔥🔥](#Benchmark-Results)
 - [⚙️ Inference and Deployment](#Inference-and-Deployment)
 - [🛠️ Fine-tuning the Model](#Fine-tuning-the-Model)
-- [🔥🔥💾 Intermediate Checkpoints](#Intermediate-Checkpoints)
+- [💾 Intermediate Checkpoints 🔥🔥](#Intermediate-Checkpoints)
 - [👥 Community and Ecosystem](#Community-and-Ecosystem)
 - [📜 Disclaimer and License](#Disclaimer-and-License)
 
