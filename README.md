@@ -536,13 +536,16 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 📢 **我们会在此持续更新社区和生态对 Baichuan2 的支持。**
 
 ## 华为昇腾
-**昇腾NPU微调**：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)。13B 支持正在开发中。
+### Pytorch 框架
+模型微调：Baichuan2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)、Baichuan2-13B 正在适配中。
 
-**昇腾NPU部署**：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
+推理部署：Baichuan2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
 
-**MindFormers套件**：[MindFormers](https://gitee.com/mindspore/mindformers) 是构建一个基于昇思框架（MindSpore）大模型训练、微调、评估、推理、部署的全流程开发套件，当前集成了 [Baichuan2](https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2)，支持用户进行模型部署、微调训练和创新研发。
+### MindSpore 框架
+[MindFormers]( https://gitee.com/mindspore/mindformers) 是一个基于昇思框架（MindSpore）并支持大模型训练、微调、评估、推理、部署的全流程开发套件，[Baichuan2-7B / 13B]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2) 已集成于此套件，支持用户进行模型微调、部署，具体使用方式可见 [README]( https://gitee.com/mindspore/mindformers/tree/dev/research/baichuan2/baichuan2.md)。
 
-**大模型体验平台**：[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan) 大模型能力开放给公众，欢迎大家使用。
+### 大模型体验平台
+[昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) 大模型能力开放给公众，欢迎大家在线体验。
 
 
 # 声明
