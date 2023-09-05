@@ -5,23 +5,23 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation.utils import GenerationConfig
 
 
-st.set_page_config(page_title="Baichuan-13B-Chat")
-st.title("Baichuan-13B-Chat")
+st.set_page_config(page_title="Baichuan2-13B-Chat")
+st.title("Baichuan2-13B-Chat")
 
 
 @st.cache_resource
 def init_model():
     model = AutoModelForCausalLM.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat",
+        "baichuan-inc/Baichuan2-13B-Chat",
         torch_dtype=torch.float16,
         device_map="auto",
         trust_remote_code=True
     )
     model.generation_config = GenerationConfig.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat"
+        "baichuan-inc/Baichuan2-13B-Chat"
     )
     tokenizer = AutoTokenizer.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat",
+        "baichuan-inc/Baichuan2-13B-Chat",
         use_fast=False,
         trust_remote_code=True
     )

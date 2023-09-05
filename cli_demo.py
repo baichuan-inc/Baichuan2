@@ -11,16 +11,16 @@ from transformers.generation.utils import GenerationConfig
 def init_model():
     print("init model ...")
     model = AutoModelForCausalLM.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat",
+        "baichuan-inc/Baichuan2-13B-Chat",
         torch_dtype=torch.float16,
         device_map="auto",
         trust_remote_code=True
     )
     model.generation_config = GenerationConfig.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat"
+        "baichuan-inc/Baichuan2-13B-Chat"
     )
     tokenizer = AutoTokenizer.from_pretrained(
-        "baichuan-inc/Baichuan-13B-Chat",
+        "baichuan-inc/Baichuan2-13B-Chat",
         use_fast=False,
         trust_remote_code=True
     )
