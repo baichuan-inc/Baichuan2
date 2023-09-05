@@ -180,7 +180,7 @@ Baichuan2 是百川智能推出的新一代开源大语言模型，采用 **2.6 
 
 ## 多语言翻译
 
-我们采用了 [Flores-101](https://huggingface.co/datasets/facebook/flores) 数据集来评估模型的多语言能力。Flores-101 涵盖了世界各地的101种语言。它的数据来源于新闻、旅游指南和书籍等多个不同领域。我们选择了联合国官方语言（阿拉伯文、中文、英文、法文、俄文和西班牙文）以及德文和日文作为测试语种。我们使用 OpenCompass 对 Flores-101 中的中-英、中-法、中-西班牙、中-阿拉伯、中-俄、中-日、中-德等七个子任务分别进行了 8-shot 测试。
+我们采用了 [Flores-101](https://huggingface.co/datasets/facebook/flores) 数据集来评估模型的多语言能力。Flores-101 涵盖了世界各地的 101 种语言。它的数据来源于新闻、旅游指南和书籍等多个不同领域。我们选择了联合国官方语言（阿拉伯文、中文、英文、法文、俄文和西班牙文）以及德文和日文作为测试语种。我们使用 OpenCompass 对 Flores-101 中的中-英、中-法、中-西班牙、中-阿拉伯、中-俄、中-日、中-德等七个子任务分别进行了 8-shot 测试。
 
 ### 7B 模型结果
 
@@ -371,7 +371,7 @@ model = model.quantize(4).cuda()
 ```python
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bits", device_map="auto", trust_remote_code=True)
 ```
-对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现8bits的模型保存和加载：
+对于 8bits 离线量化，我们没有提供相应的版本，因为 HuggingFace transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现 8bits 的模型保存和加载：
 ```python
 # Model saving: model_id is the original model directory, and quant8_saved_dir is the directory where the 8bits quantized model is saved.
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
@@ -396,7 +396,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Baichuan2-7B-Chat       | 54.35   | 52.93 | 54.99  |
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 
-可以看到，4bits 相对 bfloat16 掉点在 1~2 个点左右。
+可以看到，4bits 相对 bfloat16 精度损失在 1% ~ 2% 左右。
 
 ## CPU 部署
 
