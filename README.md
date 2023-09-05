@@ -528,7 +528,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ```
 
 # 历史 checkpoint
-我们提供了 Baichuan2-7B-Base 模型的 10 个历史 checkpoint（[下载地址](http://hugging-face.co/baichuan-inc/Baichuan-7B-Base)），供研究使用。
+我们提供了 Baichuan2-7B-Base 模型的 12 个历史 checkpoint（[下载地址](http://hugging-face.co/baichuan-inc/Baichuan-7B-Base)），对应了训练了 0.22 ~ 2.64 万亿 Tokens 时的模型，供研究使用。下图给出了这些 checkpoint 在 C-Eval、MMLU、CMMLU 三个 benchmark 上的效果。
 
 # 社区支持
 
