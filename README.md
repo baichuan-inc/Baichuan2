@@ -25,7 +25,7 @@
 # 目录
 
 - [介绍](#介绍)
-- [Benchmark结果](#Benchmark-结果)
+- [Benchmark 结果](#Benchmark-结果)
 - [推理和部署](#推理和部署)
 - [对模型进行微调](#对模型进行微调)
 - [Intermediate Checkpoints](#Intermediate-Checkpoints)
