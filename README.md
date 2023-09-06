@@ -420,7 +420,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 
 Baichuan 2 模型支持 CPU 推理，但需要强调的是，CPU 的推理速度相对较慢。需按如下方式修改模型加载的方式：
 ```python
-# Taking BVaichuan2-7B-Chat as an example
+# Taking Baichuan2-7B-Chat as an example
 model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat", torch_dtype=torch.float32, trust_remote_code=True)
 ```
 ## 对 Baichuan 1 的推理优化迁移到 Baichuan 2
