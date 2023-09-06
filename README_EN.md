@@ -412,7 +412,7 @@ The results on various benchmarks after quantization compared to the original ve
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 > C-Eval is tested on val set
 
-It can be seen that the 4bits, compared to bfloat16, has a drop of around 1~2 percents.
+It can be seen that the 4bits, compared to bfloat16, has a drop of around 1 ~ 2 percentage points.
 
 ## CPU Deployment
 
