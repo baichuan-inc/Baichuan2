@@ -247,10 +247,11 @@ pip install -r requirements.txt
 ```shell
 python cli_demo.py
 ```
+本命令行工具是为 Chat 场景设计，因此我们不支持使用该工具调用 Base 模型。
 
 ## 网页 demo 方式
 
-依靠 streamlit 运行以下命令，会在本地启动一个 web 服务，把控制台给出的地址放入浏览器即可访问。
+依靠 streamlit 运行以下命令，会在本地启动一个 web 服务，把控制台给出的地址放入浏览器即可访问。本网页 demo 工具是为 Chat 场景设计，因此我们不支持使用该工具调用 Base 模型。
 
 ```shell
 streamlit run web_demo.py
