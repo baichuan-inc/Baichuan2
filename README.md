@@ -414,7 +414,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 > C-Eval 是在其 val set 上进行的评测
 
-可以看到，4bits 相对 bfloat16 精度损失在 1% ~ 2% 左右。
+可以看到，4bits 相对 bfloat16 精度损失在 1 - 2 个百分点左右
 
 ## CPU 部署
 
