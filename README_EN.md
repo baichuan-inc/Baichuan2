@@ -222,6 +222,8 @@ pip install -r requirements.txt
 
 ## Python Code Inference
 
+### Demenstration of Chat Model Inference
+
 ```python
 >>> import torch
 >>> from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -238,17 +240,32 @@ pip install -r requirements.txt
 这句话鼓励我们在学习和生活中不断地回顾和反思过去的经验，从而获得新的启示和成长。通过重温旧的知识和经历，我们可以发现新的观点和理解，从而更好地应对不断变化的世界和挑战。
 ```
 
-> In the above code, the model loading specifies `device_map='auto'`, which will use all available GPUs. If you need to specify the device(s) to use, you can control it in a way similar to `export CUDA_VISIBLE_DEVICES=0,1` (using the 0 and 1 graphics cards).
+### Demenstration of Base Model Inference
+
+```python
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan2-13B-Base", trust_remote_code=True)
+>>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-13B-Base", device_map="auto", trust_remote_code=True)
+>>> inputs = tokenizer('登鹳雀楼->王之涣\n夜雨寄北->', return_tensors='pt')
+>>> inputs = inputs.to('cuda:0')
+>>> pred = model.generate(**inputs, max_new_tokens=64, repetition_penalty=1.1)
+>>> print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
+登鹳雀楼->王之涣
+夜雨寄北->李商隐
+```
+
+> In the above code snippets, the model loading specifies `device_map='auto'`, which will use all available GPUs. If you need to specify the device(s) to use, you can control it in a way similar to `export CUDA_VISIBLE_DEVICES=0,1` (using the 0 and 1 graphics cards).
 
 ## Command Line Tool Inference
 
 ```shell
 python cli_demo.py
 ```
+We do not support using this tool for Base Model because it is designed for Chat scenario.
 
 ## Web Demo Inference
 
-Run the following command using streamlit. It will start a web service locally. You can access it by entering the address provided in the console into your browser.
+Run the following command using streamlit. It will start a web service locally. You can access it by entering the address provided in the console into your browser. We do not support using this tool for Base Model because it is designed for Chat scenario.
 
 ```shell
 streamlit run web_demo.py
