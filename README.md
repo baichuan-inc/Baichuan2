@@ -215,7 +215,7 @@
 
 # 推理和部署
 
-推理所需的模型权重、源码、配置已发布在 Hugging Face，下载链接见本文档最开始的表格。下面以 Baichuan2-13B-Chat 为例示范多种推理方式。程序会自动从 Hugging Face 下载所需资源。
+推理所需的模型权重、源码、配置已发布在 Hugging Face，下载链接见本文档最开始的表格。我们在此示范多种推理方式。程序会自动从 Hugging Face 下载所需资源。
 
 ## 安装依赖
 ```shell
@@ -224,6 +224,7 @@ pip install -r requirements.txt
 
 ## Python 代码方式
 
+### Chat 模型推理方法示范
 ```python
 >>> import torch
 >>> from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -240,7 +241,20 @@ pip install -r requirements.txt
 这句话鼓励我们在学习和生活中不断地回顾和反思过去的经验，从而获得新的启示和成长。通过重温旧的知识和经历，我们可以发现新的观点和理解，从而更好地应对不断变化的世界和挑战。
 ```
 
-> 在上述代码中，模型加载指定 `device_map='auto'`，会使用所有可用显卡。如需指定使用的设备，可以使用类似 `export CUDA_VISIBLE_DEVICES=0,1`（使用了0、1号显卡）的方式控制。
+### Base 模型推理方法示范
+```python
+>>> from transformers import AutoModelForCausalLM, AutoTokenizer
+>>> tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan2-13B-Base", trust_remote_code=True)
+>>> model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-13B-Base", device_map="auto", trust_remote_code=True)
+>>> inputs = tokenizer('登鹳雀楼->王之涣\n夜雨寄北->', return_tensors='pt')
+>>> inputs = inputs.to('cuda:0')
+>>> pred = model.generate(**inputs, max_new_tokens=64, repetition_penalty=1.1)
+>>> print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
+登鹳雀楼->王之涣
+夜雨寄北->李商隐
+```
+
+> 在上述两段代码中，模型加载指定 `device_map='auto'`，会使用所有可用显卡。如需指定使用的设备，可以使用类似 `export CUDA_VISIBLE_DEVICES=0,1`（使用了0、1号显卡）的方式控制。
 
 ## 命令行工具方式
 
@@ -415,7 +429,7 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 | Baichuan2-7B-Chat-4bits | 53.04   | 51.72 | 52.84  |
 > C-Eval 是在其 val set 上进行的评测
 
-可以看到，4bits 相对 bfloat16 精度损失在 1 - 2 个百分点左右
+可以看到，4bits 相对 bfloat16 精度损失在 1 - 2 个百分点左右。
 
 ## CPU 部署
 
