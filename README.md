@@ -415,8 +415,8 @@ model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto"
 量化前后显存占用对比 (GPU Mem in GB)：
 | Precision   | Baichuan2-7B |Baichuan2-13B |
 |-------------|:------------:|:------------:|
-| bf16 / fp16 | 14.0         | 25.9         |
-| 8bits       | 8.0          | 14.2         |
+| bf16 / fp16 | 15.3         | 27.5         |
+| 8bits       | 8.0          | 16.1         |
 | 4bits       | 5.1          | 8.6          |
 
 量化后在各个 benchmark 上的结果和原始版本对比如下：
