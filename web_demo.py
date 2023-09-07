@@ -5,8 +5,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation.utils import GenerationConfig
 
 
-st.set_page_config(page_title="Baichuan2-13B-Chat")
-st.title("Baichuan2-13B-Chat")
+st.set_page_config(page_title="Baichuan 2")
+st.title("Baichuan 2")
 
 
 @st.cache_resource
