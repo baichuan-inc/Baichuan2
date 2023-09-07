@@ -13,7 +13,7 @@
 
 <div align="center">
 
-🚀 [百川大模型在线对话平台](https://www.baichuan-ai.com/)已正式向公众开放 🎉
+🚀 [百川53B大模型在线对话平台](https://www.baichuan-ai.com/)已正式向公众开放 🎉
 
 [![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)
 
