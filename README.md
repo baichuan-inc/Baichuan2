@@ -579,6 +579,9 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 [昇思大模型平台](https://xihe.mindspore.cn) 基于昇思 MindSpore AI 框架、MindFormers 大模型开发套件与昇腾硬件算力，将 [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) 大模型能力开放给公众，欢迎大家在线体验。
 
+## LLaMA-Efficient-Tuning
+[LLaMA-Efficient-Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 已支持对 Baichuan 2 模型的微调和继续训练。
+
 # 声明与协议
 
 ## 声明
