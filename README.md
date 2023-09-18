@@ -405,6 +405,9 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bi
 对于 8bits 离线量化，我们没有提供相应的版本，因为 Hugging Face transformers 库提供了相应的 API 接口，可以很方便的实现 8bits 量化模型的保存和加载。用户可以自行按照如下方式实现 8bits 的模型保存和加载：
 ```python
 # Model saving: model_id is the original model directory, and quant8_saved_dir is the directory where the 8bits quantized model is saved.
+tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=False, trust_remote_code=True)
+tokenizer.save_pretrained(quant8_saved_dir)
+
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
 model.save_pretrained(quant8_saved_dir)
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)

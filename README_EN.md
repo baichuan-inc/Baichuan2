@@ -405,6 +405,9 @@ model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan2-7B-Chat-4bi
 For 8bits offline quantization, we haven't provided a corresponding version since the Hugging Face transformers library offers the necessary API interfaces. This makes the saving and loading of 8bits quantized models very convenient. Users can implement the saving and loading of 8bits models in the following manner:
 ```python
 # Model saving: model_id is the original model directory, and quant8_saved_dir is the directory where the 8bits quantized model is saved.
+tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=False, trust_remote_code=True)
+tokenizer.save_pretrained(quant8_saved_dir)
+
 model = AutoModelForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map="auto", trust_remote_code=True)
 model.save_pretrained(quant8_saved_dir)
 model = AutoModelForCausalLM.from_pretrained(quant8_saved_dir, device_map="auto", trust_remote_code=True)
