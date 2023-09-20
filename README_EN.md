@@ -30,7 +30,7 @@
 - [🛠️ Fine-tuning the Model](#Fine-tuning-the-Model)
 - [💾 Intermediate Checkpoints 🔥🔥](#Intermediate-Checkpoints)
 - [👥 Community and Ecosystem](#Community-and-Ecosystem)
-- [📜 Disclaimer and License](#Disclaimer-and-License)
+- [📜 Disclaimer, License and Citation](#Disclaimer,-License-and-Citation)
 
 # Models Introduction
 
@@ -38,7 +38,7 @@
 - Baichuan 2 achieved the best performance of its size on multiple authoritative Chinese, English, and multi-language general and domain-specific benchmarks.
 - This release includes **Base** and **Chat** versions for **7B** and **13B**, and a **4bits quantized** version for the Chat model.
 - All versions are fully open to academic research. Developers only need to apply via email and obtain official commercial permission to use it for free commercially.
-- For more information, welcome reading our technical report [Baichuan 2: Open Large-scale Language Models](https://cdn.baichuan-ai.com/paper/Baichuan2-technical-report.pdf).
+- For more information, welcome reading our technical report [Baichuan 2: Open Large-scale Language Models](https://arxiv.org/abs/2309.10305).
 
 The specific released versions and download links are shown in the table below:
 
@@ -581,7 +581,7 @@ Inference Deployment: Baichuan 2 supports Ascend NPU inference. Required modelin
 
 [Ascend Large Model Platform](https://xihe.mindspore.cn) based on Ascend's MindSpore AI framework, MindFormers large model development suite, and Ascend hardware computing power, has opened the capabilities of the [Baichuan2-7B](https://xihe.mindspore.cn/modelzoo/baichuan2_7b_chat) large model to the public. Everyone is welcome to experience it online.
 
-# Disclaimer and License
+# Disclaimer, License and Citation
 
 ## Disclaimer
 We hereby declare that our team has not developed any applications based on Baichuan 2 models, not on iOS, Android, the web, or any other platform. We strongly call on all users not to use Baichuan 2 models for any activities that harm national / social security or violate the law. Also, we ask users not to use Baichuan 2 models for Internet services that have not undergone appropriate security reviews and filings. We hope that all users can abide by this principle and ensure that the development of technology proceeds in a regulated and legal environment.
@@ -590,3 +590,15 @@ We have done our best to ensure the compliance of the data used in the model tra
 
 ## License
 The use of the source code in this repository follows the open-source license [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE). Community use of the Baichuan 2 model must adhere to the [Community License for Baichuan 2 Model](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Community%20License%20for%20Baichuan%202%20Model.pdf). Baichuan 2 supports commercial use. If you are using the Baichuan 2 models or their derivatives for commercial purposes, please contact the licensor in the following manner for registration and to apply for written authorization: Email <opensource@baichuan-inc.com>.
+
+## Citation
+If you wish to cite our work, please use the following reference:
+```
+@article{baichuan2023baichuan2,
+  title={Baichuan 2: Open Large-scale Language Models},
+  author={Baichuan},
+  journal={arXiv preprint arXiv:2309.10305},
+  url={https://arxiv.org/abs/2309.10305},
+  year={2023}
+}
+```
