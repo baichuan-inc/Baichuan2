@@ -35,7 +35,7 @@
 - [🛠️ 模型微调](#模型微调)
 - [💾 中间 Checkpoints 🔥🔥](#中间-Checkpoints)
 - [👥 社区与生态](#社区与生态)
-- [📜 声明与协议](#声明与协议)
+- [📜 声明、协议、引用](#声明、协议、引用)
 
 # 模型介绍
 
@@ -43,7 +43,7 @@
 - Baichuan 2 在多个权威的中文、英文和多语言的通用、领域 benchmark 上取得同尺寸**最佳**的效果。
 - 本次发布包含有 **7B**、**13B** 的 **Base** 和 **Chat** 版本，并提供了 Chat 版本的 **4bits 量化**。
 - 所有版本对学术研究完全开放。同时，开发者通过邮件申请并获得官方商用许可后，即可**免费商用**，请参考[协议](#协议)章节。
-- 欢迎阅读我们的技术报告 [Baichuan 2: Open Large-scale Language Models](https://cdn.baichuan-ai.com/paper/Baichuan2-technical-report.pdf) 获取更多信息。
+- 欢迎阅读我们的技术报告 [Baichuan 2: Open Large-scale Language Models](https://arxiv.org/abs/2309.10305) 获取更多信息。
 
 本次发布版本和下载链接见下表：
 |         | 基座模型  | 对齐模型 | 对齐模型 4bits 量化 |
@@ -582,7 +582,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ## LLaMA-Efficient-Tuning
 [LLaMA-Efficient-Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 已支持对 Baichuan 2 模型的微调和继续训练。
 
-# 声明与协议
+# 声明、协议、引用
 
 ## 声明
 
@@ -593,3 +593,15 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ## 协议
 
 对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)。对 Baichuan 2 模型的社区使用需遵循[《Baichuan 2 模型社区许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan 2 支持商用。如果将 Baichuan 2 模型或其衍生品用作商业用途，请您通过邮箱 <opensource@baichuan-inc.com> 联系许可方，申请书面授权。
+
+## 引用
+如需引用我们的工作，请使用如下 reference:
+```
+@article{baichuan2023baichuan2,
+  title={Baichuan 2: Open Large-scale Language Models},
+  author={Baichuan},
+  journal={arXiv preprint arXiv:2309.10305},
+  url={https://arxiv.org/abs/2309.10305},
+  year={2023}
+}
+```
