@@ -30,7 +30,7 @@
 - [🛠️ Fine-tuning the Model](#Fine-tuning-the-Model)
 - [💾 Intermediate Checkpoints 🔥🔥](#Intermediate-Checkpoints)
 - [👥 Community and Ecosystem](#Community-and-Ecosystem)
-- [📜 Disclaimer, License and Citation](#Disclaimer,-License-and-Citation)
+- [📜 Disclaimer, License and Citation](#Disclaimer-License-and-Citation)
 
 # Models Introduction
 
