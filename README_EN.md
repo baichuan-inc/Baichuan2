@@ -589,7 +589,13 @@ We hereby declare that our team has not developed any applications based on Baic
 We have done our best to ensure the compliance of the data used in the model training process. However, despite our considerable efforts, there may still be some unforeseeable issues due to the complexity of the model and data. Therefore, if any problems arise due to the use of Baichuan 2 open-source models, including but not limited to data security issues, public opinion risks, or any risks and problems brought about by the model being misled, abused, spread or improperly exploited, we will not assume any responsibility.
 
 ## License
-The use of the source code in this repository follows the open-source license [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE). Community use of the Baichuan 2 model must adhere to the [Community License for Baichuan 2 Model](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Community%20License%20for%20Baichuan%202%20Model.pdf). Baichuan 2 supports commercial use. If you are using the Baichuan 2 models or their derivatives for commercial purposes, please contact the licensor in the following manner for registration and to apply for written authorization: Email <opensource@baichuan-inc.com>.
+The community usage of Baichuan 2 model requires adherence to [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE) and [Community License for Baichuan2 Model](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf). The Baichuan 2 model supports commercial use. If you plan to use the Baichuan 2 model or its derivatives for commercial purposes, please ensure that your entity meets the following conditions:
+
+  1. The Daily Active Users (DAU) of your or your affiliate's service or product is less than 1 million.
+  2. Neither you nor your affiliates are software service providers or cloud service providers.
+  3. There is no possibility for you or your affiliates to grant the commercial license given to you, to reauthorize it to other third parties without Baichuan's permission.
+
+Upon meeting the above conditions, you need to submit the application materials required by the Baichuan 2 Model Community License Agreement via the following contact email: opensource@baichuan-inc.com. Once approved, Baichuan will hereby grant you a non-exclusive, global, non-transferable, non-sublicensable, revocable commercial copyright license.
 
 ## Citation
 If you wish to cite our work, please use the following reference:
