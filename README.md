@@ -591,8 +591,12 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 我们已经尽我们所能，来确保模型训练过程中使用的数据的合规性。然而，尽管我们已经做出了巨大的努力，但由于模型和数据的复杂性，仍有可能存在一些无法预见的问题。因此，如果由于使用 Baichuan 2 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
 
 ## 协议
+社区使用 Baichuan 2 模型需要遵循 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE) 和[《Baichuan 2 模型社区许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan 2 模型支持商业用途，如果您计划将 Baichuan 2 模型或其衍生品用于商业目的，请您确认您的主体符合以下情况：
+  1. 您或您的关联方的服务或产品的日均用户活跃量（DAU）低于100万。
+  2. 您或您的关联方不是软件服务提供商、云服务提供商。
+  3. 您或您的关联方不存在将授予您的商用许可，未经百川许可二次授权给其他第三方的可能。
 
-对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan2/blob/main/LICENSE)。对 Baichuan 2 模型的社区使用需遵循[《Baichuan 2 模型社区许可协议》](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。Baichuan 2 支持商用。如果将 Baichuan 2 模型或其衍生品用作商业用途，请您通过邮箱 <opensource@baichuan-inc.com> 联系许可方，申请书面授权。
+在符合以上条件的前提下，您需要通过以下联系邮箱 opensource@baichuan-inc.com ，提交《Baichuan 2 模型社区许可协议》要求的申请材料。审核通过后，百川将特此授予您一个非排他性、全球性、不可转让、不可再许可、可撤销的商用版权许可。
 
 ## 引用
 如需引用我们的工作，请使用如下 reference:
