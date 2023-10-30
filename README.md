@@ -582,6 +582,9 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 ## LLaMA-Efficient-Tuning
 [LLaMA-Efficient-Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 已支持对 Baichuan 2 模型的微调和继续训练。
 
+## 太初元碁
+Baichuan2（7B/13B）支持太初 T100 加速卡推理，现[试用通道](http://www.tecorigin.com/cn/developer.html)已正式对外开启。
+
 # 声明、协议、引用
 
 ## 声明
