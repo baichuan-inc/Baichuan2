@@ -5,3 +5,5 @@ sentencepiece
 streamlit
 transformers_stream_generator
 cpm_kernels
+transformers==4.33.3
+torch==2.0.0
