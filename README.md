@@ -567,7 +567,7 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 ### Pytorch 框架
 
-模型微调：Baichuan 2 （7B）已原生支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，无需额外适配即可使用。
+模型微调：Baichuan 2 （7B）已原生支持基于昇腾 NPU 的 PyTorch（2.1.0）+ Transformers（4.36.0）+ DeepSpeed（0.12.4）+ Accelerate（0.25.0）模型微调，无需额外适配即可使用。
 
 推理部署：Baichuan 2 （7B）已原生支持昇腾 NPU 推理，无需额外适配即可使用。
 

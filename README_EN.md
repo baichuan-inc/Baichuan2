@@ -569,7 +569,7 @@ In addition to the Baichuan2-7B-Base model with 2.6 trillion tokens, we also pro
 
 ### Pytorch Framework
 
-Model Fine-tuning: Baichuan 2 (7B) already supports PyTorch + DeepSpeed model fine-tuning based on Ascend NPU natively, and can be used without additional adaptation.
+Model Fine-tuning: Baichuan 2 (7B) already supports PyTorch（2.1.0）+ Transformers（4.36.0）+ DeepSpeed（0.12.4）+ Accelerate（0.25.0）model fine-tuning based on Ascend NPU natively, and can be used without additional adaptation.
 
 Inference Deployment: Baichuan 2 (7B) already supports inference with the Ascend NPU natively, and can be used without additional adaptation.
 
