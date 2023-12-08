@@ -569,9 +569,9 @@ In addition to the Baichuan2-7B-Base model with 2.6 trillion tokens, we also pro
 
 ### Pytorch Framework
 
-Model Fine-tuning: Baichuan 2 supports model fine-tuning based on Ascend NPU using PyTorch + DeepSpeed. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B). Baichuan2-13B is under adaptation.
+Model Fine-tuning: Baichuan 2 (7B) already supports PyTorch + DeepSpeed model fine-tuning based on Ascend NPU natively, and can be used without additional adaptation.
 
-Inference Deployment: Baichuan 2 supports Ascend NPU inference. Required modeling, README, and example scripts have been released: [Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b), [Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b).
+Inference Deployment: Baichuan 2 (7B) already supports inference with the Ascend NPU natively, and can be used without additional adaptation.
 
 ### MindSpore Framework
 
