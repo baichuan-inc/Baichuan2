@@ -42,7 +42,6 @@
 # 更新
 [2023.12.29] 🎉🎉🎉 我们发布了 **[Baichuan2-13B-Chat v2](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat/tree/v2.0)** 版本。其中：
 - 大幅提升了模型的综合能力，特别是数学和逻辑推理、复杂指令跟随能力。
-- 模型处理长度从 4096 提升 至8192 。
 
 # 模型介绍
 
