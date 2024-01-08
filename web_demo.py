@@ -3,7 +3,7 @@ import torch
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation.utils import GenerationConfig
-
+import torch.mps
 
 st.set_page_config(page_title="Baichuan 2")
 st.title("Baichuan 2")
@@ -60,10 +60,11 @@ def main():
             placeholder = st.empty()
             for response in model.chat(tokenizer, messages, stream=True):
                 placeholder.markdown(response)
-                if torch.backends.mps.is_available():
-                    torch.mps.empty_cache()
         messages.append({"role": "assistant", "content": response})
         print(json.dumps(messages, ensure_ascii=False), flush=True)
+
+        if torch.backends.mps.is_available():
+            torch.mps.empty_cache()
 
         st.button("清空对话", on_click=clear_chat_history)
 
