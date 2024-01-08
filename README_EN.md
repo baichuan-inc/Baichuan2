@@ -35,7 +35,6 @@
 # Update
 [2023.12.29] 🎉🎉🎉 We have released **[Baichuan2-13B-Chat v2](https://huggingface.co/baichuan-inc/Baichuan2-13B-Chat/tree/v2.0)** version. In this version:
 - Significantly improved the model's overall capabilities, especially in mathematics and logical reasoning, and complex instruction following.
-- The model's processing length has been increased from 4096 to 8192.
 
 # Models Introduction
 
