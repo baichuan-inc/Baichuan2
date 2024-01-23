@@ -573,9 +573,9 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 ### Pytorch 框架
 
-模型微调：Baichuan 2 支持基于昇腾 NPU 的 PyTorch + DeepSpeed 模型微调，微调所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/PyTorch/built-in/foundation/Baichuan2/7B)、Baichuan2-13B 正在适配中。
+模型微调：Baichuan 2 （7B）已原生支持基于昇腾 NPU 的 PyTorch（2.1.0）+ Transformers（4.36.0）+ DeepSpeed（0.12.4）+ Accelerate（0.25.0）模型微调，无需额外适配即可使用。
 
-推理部署：Baichuan 2 支持昇腾 NPU 推理，推理所需的 modeling、README、示例脚本已发布：[Baichuan2-7B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/7b)、[Baichuan2-13B](https://gitee.com/ascend/ModelZoo-PyTorch/tree/master/ACL_PyTorch/built-in/foundation_models/baichuan2/13b)。
+推理部署：Baichuan 2 （7B）已原生支持昇腾 NPU 推理，无需额外适配即可使用。
 
 ### MindSpore 框架
 
