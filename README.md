@@ -569,6 +569,20 @@ model = AutoPeftModelForCausalLM.from_pretrained("output", trust_remote_code=Tru
 
 **📢📢📢 我们会在此持续更新社区和生态对 Baichuan 2 的支持 😀😀😀**
 
+## Intel 酷睿 Ultra 平台运行百川大模型
+
+### 使用方式
+
+使用酷睿™/至强® 可扩展处理器或配合锐炫™ GPU等进行部署BaiChuan2 - 7B/Chat，BaiChuan2 - 13B/Chat模型
+
+推荐使用 BigDL-LLM（[CPU](https://github.com/intel-analytics/BigDL/tree/main/python/llm/example/CPU/HF-Transformers-AutoModels/Model/baichuan2), [GPU](https://github.com/intel-analytics/BigDL/tree/main/python/llm/example/GPU/HF-Transformers-AutoModels/Model/baichuan2)）以发挥更好推理性能。
+
+### 帮助文档
+
+[中文操作手册](https://github.com/intel-analytics/bigdl-llm-tutorial/tree/main/Chinese_Version)，包括用notebook支持
+
+[加载，优化，保存方法等](https://github.com/intel-analytics/bigdl-llm-tutorial/blob/main/Chinese_Version/ch_3_AppDev_Basic/3_BasicApp.ipynb)
+
 ## 华为昇腾
 
 ### Pytorch 框架
