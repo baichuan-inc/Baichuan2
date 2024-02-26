@@ -569,6 +569,14 @@ In addition to the Baichuan2-7B-Base model with 2.6 trillion tokens, we also pro
 
 **📢📢📢 We will continuously update the support for Baichuan 2 from the community and ecosystem here 😀😀😀**
 
+## Running BaiChuan LLM on Intel® Core™ Ultra
+
+### How to Use
+
+When deploy on Core™/Xeon® Scalable Processors or with Arc™ GPU to deploy BaiChuan2 - 7B/Chat and BaiChuan2 - 13B/Chat model.
+
+BigDL-LLM to ([CPU](https://github.com/intel-analytics/BigDL/tree/main/python/llm/example/CPU/HF-Transformers-AutoModels/Model/baichuan2), [GPU](https://github.com/intel-analytics/BigDL/tree/main/python/llm/example/GPU/HF-Transformers-AutoModels/Model/baichuan2)) is recommended to take full advantage of better inference performance.
+
 ## Huawei Ascend
 
 ### Pytorch Framework
