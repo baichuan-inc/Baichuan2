@@ -6,6 +6,7 @@ from colorama import Fore, Style
 from tempfile import NamedTemporaryFile
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation.utils import GenerationConfig
+from peft import PeftModel
 
 
 def init_model():
@@ -18,6 +19,10 @@ def init_model():
     )
     model.generation_config = GenerationConfig.from_pretrained(
         "baichuan-inc/Baichuan2-13B-Chat"
+    )
+    model = PeftModel.from_pretrained(
+        "baichuan-inc/Baichuan2-13B-Chat",
+        "baichuan-inc/baichuan2-13b-iepile-lora",
     )
     tokenizer = AutoTokenizer.from_pretrained(
         "baichuan-inc/Baichuan2-13B-Chat",

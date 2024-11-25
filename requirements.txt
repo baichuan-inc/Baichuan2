@@ -7,3 +7,4 @@ transformers_stream_generator
 cpm_kernels
 xformers
 scipy
+peft
