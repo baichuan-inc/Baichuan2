@@ -78,7 +78,7 @@ class SupervisedDataset(Dataset):
 
             if from_ == "human":
                 input_ids += self.user_tokens + value_ids
-                labels += [self.tokenizer.eos_token_id] + [self.ignore_index] * len(
+                labels += [self.ignore_index] + [self.ignore_index] * len(
                     value_ids
                 )
             else:
