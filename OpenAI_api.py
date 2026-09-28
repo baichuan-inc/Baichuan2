@@ -28,10 +28,8 @@ def chat_completion():
         response_text = generate_response(messages)
 
         # Calculate token counts
-        prompt_tokens = sum(len(tokenizer.encode(msg['content'])) for msg in messages)
         # 暂时不支持调节其他参数
-        completion_tokens = len(response_text)
-        total_tokens = prompt_tokens + completion_tokens
+        prompt_tokens, completion_tokens, total_tokens = count_usage(messages, response_text)
 
         # Build the response
         response_data = {
@@ -49,6 +47,12 @@ def chat_completion():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+def count_usage(messages, response_text):
+    prompt_tokens = sum(len(tokenizer.encode(msg['content'])) for msg in messages)
+    completion_tokens = len(tokenizer.encode(response_text))
+    return prompt_tokens, completion_tokens, prompt_tokens + completion_tokens
+
 
 def generate_response(messages):
     # Generate response using the model
